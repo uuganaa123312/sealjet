@@ -5,7 +5,6 @@ import FooterMenu from "./FooterMenu";
 import Footer from "./Footer";
 
 const Layout = ({ children }) => {
-  console.log("asd");
   return (
     <div>
       <Header />
