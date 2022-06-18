@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
+import MobileCat from "./MobileCat";
 import Sidebar from "./Sidebar";
-import FooterMenu from "./FooterMenu";
 import Footer from "./Footer";
 
 const Layout = ({ children }) => {
+  const [open, setOpen] = useState(false);
   return (
-    <div>
-      <Header />
-      <div className="mt-[58px]">{children}g</div>
-      <Sidebar />
-      <FooterMenu />
+    <div className="font-[Nunito]">
+      <Header setOpen={setOpen} open={open} />
+      <MobileCat />
+      <div className="sm:mt-[58px]">{children}</div>
+      <Sidebar open={open} />
       <Footer />
     </div>
   );
