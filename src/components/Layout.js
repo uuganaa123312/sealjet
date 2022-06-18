@@ -10,8 +10,8 @@ const Layout = ({ children }) => {
     <div className="font-[Nunito]">
       <Header setOpen={setOpen} open={open} />
       <MobileCat />
-      <div className="sm:mt-[58px]">{children}</div>
-      <Sidebar open={open} />
+      {children}
+      <Sidebar open={open} setOpen={setOpen} />
       <Footer />
     </div>
   );

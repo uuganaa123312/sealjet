@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ open, setOpen }) => {
+  const navigate = useNavigate();
   const [isshow, setIsshow] = useState(false);
   return (
     <div className="fixed top-0 w-screen h-[58px] z-20">
@@ -46,7 +48,14 @@ const Header = ({ open, setOpen }) => {
           />
         ) : (
           <div className="xl:pl-10 cursor-default">
-            <img src="img/logo.png" alt="" />
+            <img
+              src="img/logo.png"
+              alt=""
+              onClick={() => {
+                setOpen(false);
+                navigate("/");
+              }}
+            />
           </div>
         )}
 
