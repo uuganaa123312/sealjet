@@ -8,17 +8,17 @@ const Sidebar = ({ open, setOpen }) => {
         open ? "translate-x-full" : "translate-x-0"
       }`}
     >
-      <div className="flex flex-col justify-center px-6 py-20 font-semibold text-lg gap-6 text-white">
+      <div className="flex flex-col justify-center px-6 py-20 font-semibold text-lg text-white">
         <Link to="/" onClick={() => setOpen(false)}>
           Нүүр
         </Link>
-        <Link to="/product" onClick={() => setOpen(false)}>
+        <Link to="/product" onClick={() => setOpen(false)} className="pt-6">
           Бүтээгдэхүүн
         </Link>
-        <Link to="/news" onClick={() => setOpen(false)}>
+        <Link to="/news" onClick={() => setOpen(false)} className="pt-6">
           Мэдээ
         </Link>
-        <Link to="/order" onClick={() => setOpen(false)}>
+        <Link to="/order" onClick={() => setOpen(false)} className="pt-6">
           Захиалга
         </Link>
       </div>
