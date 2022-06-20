@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: selt-hosted
+    runs-on: self-hosted
 
     strategy:
       matrix:
