@@ -2,7 +2,7 @@ import React from "react";
 
 const Home = () => {
   return (
-    <div>
+    <div className="pt-[58px]">
       <div className="sm:hidden">mobileHome</div>
       <div className="hidden sm:block">desktopHome</div>
     </div>

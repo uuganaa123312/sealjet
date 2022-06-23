@@ -8,7 +8,7 @@ const Sidebar = ({ open, setOpen }) => {
         open ? "translate-x-full" : "translate-x-0"
       }`}
     >
-      <div className="flex flex-col justify-center px-6 py-20 font-semibold text-lg text-white">
+      <div className="flex flex-col justify-center px-6 py-20 font-semibold text-lg text-gray-100">
         <Link to="/" onClick={() => setOpen(false)}>
           Нүүр
         </Link>

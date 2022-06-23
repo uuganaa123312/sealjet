@@ -5,8 +5,8 @@ const Header = ({ open, setOpen }) => {
   const navigate = useNavigate();
   const [isshow, setIsshow] = useState(false);
   return (
-    <div className="fixed top-0 w-screen h-[58px] z-20">
-      <div className="bg-[#395C4D] text-white flex items-center justify-between px-6 py-2 h-[58px]">
+    <div className="fixed top-0 left-0 h-[58px] bg-[#395C4D] w-full z-20">
+      <div className="text-gray-100 px-4 flex items-center justify-between py-2 h-[58px] max-w-7xl mx-auto">
         <div className="sm:hidden" onClick={() => setOpen(!open)}>
           {open ? (
             <svg
@@ -47,7 +47,7 @@ const Header = ({ open, setOpen }) => {
             autoComplete="off"
           />
         ) : (
-          <div className="xl:pl-10 cursor-default">
+          <div className="cursor-default">
             <img
               src="img/logo.png"
               alt=""
@@ -93,14 +93,14 @@ const Header = ({ open, setOpen }) => {
         </div>
 
         <div className="hidden sm:flex w-full justify-between items-center">
-          <div className="flex items-center justify-evenly w-full gap-3 text-xs md:gap-6 md:text-sm lg:gap-16 lg:text-base xl:gap-28 xl:pr-10 2xl:gap-40 font-semibold cursor-default">
+          <div className="flex items-center justify-evenly w-full text-xs md:text-sm lg:text-base font-semibold cursor-default">
             <div>Нүүр</div>
             <div>Материал</div>
             <div>Бүтээгдэхүүн</div>
             <div>Мэдээ</div>
             <div>Захиалах</div>
           </div>
-          <div className="xl:pr-10">
+          <div>
             <div className="relative text-gray-700">
               <span className="absolute inset-y-0 left-0 flex items-center pl-2">
                 <div className="p-1 focus:outline-none focus:shadow-outline">
