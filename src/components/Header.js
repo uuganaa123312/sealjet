@@ -91,35 +91,40 @@ const Header = ({ open, setOpen }) => {
             </svg>
           )}
         </div>
-        <div className="hidden sm:flex items-center justify-center gap-3 text-xs md:gap-6 md:text-sm lg:gap-16 lg:text-base xl:gap-28 xl:pr-10 2xl:gap-40 font-semibold cursor-default">
-          <div>Нүүр</div>
-          <div>Материал</div>
-          <div>Бүтээгдэхүүн</div>
-          <div>Мэдээ</div>
-          <div>Захиалах</div>
-          <div className="relative text-gray-700">
-            <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-              <div className="p-1 focus:outline-none focus:shadow-outline">
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  viewBox="0 0 24 24"
-                  className="w-4 h-4"
-                >
-                  <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-            </span>
-            <input
-              type="search"
-              name="q"
-              className="py-1 text-sm text-gray-900 bg-white rounded-md pl-10 focus:outline-none focus:shadow-outline"
-              placeholder="Бүтээгдэхүүн хайх"
-              autoComplete="off"
-            />
+
+        <div className="hidden sm:flex w-full justify-between items-center">
+          <div className="flex items-center justify-evenly w-full gap-3 text-xs md:gap-6 md:text-sm lg:gap-16 lg:text-base xl:gap-28 xl:pr-10 2xl:gap-40 font-semibold cursor-default">
+            <div>Нүүр</div>
+            <div>Материал</div>
+            <div>Бүтээгдэхүүн</div>
+            <div>Мэдээ</div>
+            <div>Захиалах</div>
+          </div>
+          <div className="xl:pr-10">
+            <div className="relative text-gray-700">
+              <span className="absolute inset-y-0 left-0 flex items-center pl-2">
+                <div className="p-1 focus:outline-none focus:shadow-outline">
+                  <svg
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    viewBox="0 0 24 24"
+                    className="w-4 h-4"
+                  >
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
+              </span>
+              <input
+                type="search"
+                name="q"
+                className="py-1 text-sm text-gray-900 bg-white rounded-md pl-10 focus:outline-none focus:shadow-outline"
+                placeholder="Бүтээгдэхүүн хайх"
+                autoComplete="off"
+              />
+            </div>
           </div>
         </div>
       </div>
