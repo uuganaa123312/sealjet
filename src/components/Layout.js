@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 
 const Layout = ({ children }) => {
-  const [open, setOpen] = useState(false);
   return (
-    <div className="font-[Nunito] max-w-7xl mx-auto">
-      <Header setOpen={setOpen} open={open} />
+    <div className="font-[Nunito] max-w-7xl mx-auto animate-fade">
+      <Header />
       {children}
-      <Sidebar open={open} setOpen={setOpen} />
+      <Sidebar />
       <Footer />
     </div>
   );

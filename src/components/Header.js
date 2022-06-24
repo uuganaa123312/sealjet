@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useSealState } from "../pages/Context";
 
-const Header = ({ open, setOpen }) => {
+const Header = () => {
+  const { state, setState } = useSealState();
   const navigate = useNavigate();
-  const [isshow, setIsshow] = useState(false);
+
   return (
-    <div className="fixed top-0 left-0 h-[58px] bg-[#395C4D] w-full z-20">
+    <div
+      className={`fixed top-0 left-0 h-[58px] bg-[#395C4D] w-full z-20 ${
+        state.header ? "hidden" : "block"
+      }`}
+    >
       <div className="text-gray-100 px-4 flex items-center justify-between py-2 h-[58px] max-w-7xl mx-auto">
-        <div className="sm:hidden" onClick={() => setOpen(!open)}>
-          {open ? (
+        <div
+          className="sm:hidden"
+          onClick={() =>
+            setState({ type: "CHANGE_TOGGLE", data: !state.toggle })
+          }
+        >
+          {state.toggle ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -38,7 +49,7 @@ const Header = ({ open, setOpen }) => {
             </svg>
           )}
         </div>
-        {isshow ? (
+        {state.sidebar ? (
           <input
             type="search"
             name="q"
@@ -49,10 +60,10 @@ const Header = ({ open, setOpen }) => {
         ) : (
           <div className="cursor-default">
             <img
-              src="img/logo.png"
+              src="/img/logo.png"
               alt=""
               onClick={() => {
-                setOpen(false);
+                setState({ type: "CHANGE_TOGGLE", data: false });
                 navigate("/");
               }}
             />
@@ -61,9 +72,11 @@ const Header = ({ open, setOpen }) => {
 
         <div
           className="hover:scale-105 sm:hidden"
-          onClick={() => setIsshow(!isshow)}
+          onClick={() =>
+            setState({ type: "CHANGE_SIDEBAR", data: !state.sidebar })
+          }
         >
-          {isshow ? (
+          {state.sidebar ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
