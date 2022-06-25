@@ -7,6 +7,9 @@ const initialState = {
   header: false,
   sidebar: false,
   toggle: false,
+  search_value: "",
+  cat_id: 0,
+  productList: [],
 };
 
 export const useSealState = () => {

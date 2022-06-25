@@ -15,7 +15,16 @@ const Reducer = (state, action) => {
         ...state,
         toggle: action.data,
       };
-
+    case "SEARCH_VALUE":
+      return {
+        ...state,
+        search_value: action.data,
+      };
+    case "CHANGE_CAT_ID":
+      return {
+        ...state,
+        cat_id: action.data,
+      };
     default:
       return state;
   }

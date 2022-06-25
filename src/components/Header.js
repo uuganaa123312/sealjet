@@ -53,9 +53,19 @@ const Header = () => {
           <input
             type="search"
             name="q"
-            className="py-1 text-sm text-gray-900 bg-white rounded-md pl-10 focus:outline-none focus:shadow-outline w-full mx-5"
+            className="py-1 text-sm text-gray-900 bg-white rounded-md pl-4 focus:outline-none focus:shadow-outline w-full mx-5"
             placeholder="Бүтээгдэхүүн хайх"
             autoComplete="off"
+            value={state.search_value}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                navigate("/product");
+                setState({ type: "SEARCH_VALUE", data: e.target.value });
+              }
+            }}
+            onChange={(e) => {
+              setState({ type: "SEARCH_VALUE", data: e.target.value });
+            }}
           />
         ) : (
           <div className="cursor-default">
@@ -136,6 +146,16 @@ const Header = () => {
                 className="py-1 text-sm text-gray-900 bg-white rounded-md pl-10 focus:outline-none focus:shadow-outline"
                 placeholder="Бүтээгдэхүүн хайх"
                 autoComplete="off"
+                value={state.search_value}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    navigate("/product");
+                    setState({ type: "SEARCH_VALUE", data: e.target.value });
+                  }
+                }}
+                onChange={(e) => {
+                  setState({ type: "SEARCH_VALUE", data: e.target.value });
+                }}
               />
             </div>
           </div>
