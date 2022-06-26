@@ -6,6 +6,7 @@ import Home from "./Home";
 import Product from "./Product";
 import ProductDetail from "../components/ProductDetail";
 import News from "./News";
+import NewsDetail from "../components/NewsDetail";
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
         <Route path="/product" element={<Product />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/news" element={<News />} />
+        <Route path="/news/:id" element={<NewsDetail />} />
       </Routes>
     </Layout>
   );
