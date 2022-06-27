@@ -18,6 +18,13 @@ const Sidebar = () => {
           Нүүр
         </Link>
         <Link
+          to="/material"
+          onClick={() => setState({ type: "CHANGE_TOGGLE", data: false })}
+          className="pt-6"
+        >
+          Материал
+        </Link>
+        <Link
           to="/product"
           onClick={() => setState({ type: "CHANGE_TOGGLE", data: false })}
           className="pt-6"

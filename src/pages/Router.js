@@ -3,6 +3,8 @@ import { Routes, Route } from "react-router-dom";
 
 import Layout from "../components/Layout";
 import Home from "./Home";
+import Material from "./Material";
+import MaterialDetail from "../components/MaterialDetail";
 import Product from "./Product";
 import ProductDetail from "../components/ProductDetail";
 import News from "./News";
@@ -14,6 +16,8 @@ const Router = () => {
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/material" element={<Material />} />
+        <Route path="/material/:id" element={<MaterialDetail />} />
         <Route path="/product" element={<Product />} />
         <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/news" element={<News />} />
