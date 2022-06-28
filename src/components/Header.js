@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useSealState } from "../pages/Context";
 
@@ -117,11 +118,11 @@ const Header = () => {
 
         <div className="hidden sm:flex w-full justify-between items-center">
           <div className="flex items-center justify-evenly w-full text-xs md:text-sm lg:text-base font-semibold cursor-default">
-            <div>Нүүр</div>
-            <div>Материал</div>
-            <div>Бүтээгдэхүүн</div>
-            <div>Мэдээ</div>
-            <div>Захиалах</div>
+            <Link to="/">Нүүр</Link>
+            <Link to="/material">Материал</Link>
+            <Link to="/product">Бүтээгдэхүүн</Link>
+            <Link to="/news">Мэдээ</Link>
+            <Link to="/order">Захиалах</Link>
           </div>
           <div>
             <div className="relative text-gray-700">
