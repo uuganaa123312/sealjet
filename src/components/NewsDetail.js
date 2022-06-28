@@ -4,7 +4,7 @@ import { useSealState } from "../pages/Context";
 
 const data = {
   id: 1,
-  url: "https://www.raworganicfood.bio/wp-content/uploads/sites/2/2016/01/500x250.png",
+  url: "https://thewharfkitchenbar.co.nz/wp-content/uploads/2016/10/500x300-1.png",
   name: "Дэвшилтэд технологи, шинжлэх ухааны ололтын нэвтрүүлсэн шилдэг",
   desc: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
   date: "6 сарын 21нд нийтлэв",
@@ -13,9 +13,12 @@ const data = {
 const NewsDetail = () => {
   const navigate = useNavigate();
   const { setState } = useSealState();
+
   useEffect(() => {
+    window.scrollTo(0, 0);
     setState({ type: "CHANGE_HEADER", data: true });
   }, [setState]);
+
   return (
     <div className="animate-fade">
       <div className="fixed left-[7px] top-[7px] sm:hidden">
@@ -39,7 +42,7 @@ const NewsDetail = () => {
       </div>
       <div className="">
         <img src={data.url} alt="" className="h-[250px] w-full object-cover" />
-        <div className="bg-white rounded-tr-3xl rounded-tl-3xl w-full -mt-12 inline-block p-4">
+        <div className="bg-white rounded-tr-3xl rounded-tl-3xl w-full -mt-4 inline-block p-4">
           <div className="text-sm">12 сарын 15</div>
           <div className="text-xl font-bold pt-3">
             “ДЭВШИЛТЭТ ТЕХНОЛОГИ, ШИНЖЛЭХ УХААНЫ ОЛОЛТЫГ НЭВТРҮҮЛСЭН ШИЛДЭГ”
@@ -58,7 +61,6 @@ const NewsDetail = () => {
             “Жижиг, дунд үйлдвэр -Хоршоо-2010” үзэсгэлэн худалдаанд амжилттай
             оролцон “Дэвшилтэт технологи, шинжилэх ухааны ололтыг нэвтрүүлсэн
             Шилдэг үйлдвэрлэгч ” номинацид шалгарч Цом, Хүндэт өргөмжлөл гардан
-    
           </div>
         </div>
       </div>

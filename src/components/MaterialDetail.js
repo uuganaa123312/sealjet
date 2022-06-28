@@ -14,6 +14,7 @@ const MaterialDetail = () => {
   const { setState } = useSealState();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     setState({ type: "CHANGE_HEADER", data: true });
   }, [setState]);
 
