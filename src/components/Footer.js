@@ -2,10 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div
-      className="relative w-full text-center bg-white py-10"
-      style={{ background: "linear-gradient(1deg, #9e9e9e, transparent)" }}
-    >
+    <div className="relative w-full text-center bg-white py-8 border-t">
       <div className="flex flex-row items-center justify-center mx-4">
         <div className="p-2 bg-[#395C4D] w-[100px] rounded-2xl flex items-center justify-center">
           <img src="/img/logo.png" alt="" className="text-center" />
