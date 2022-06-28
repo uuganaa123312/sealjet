@@ -152,6 +152,10 @@ const Product = () => {
   const [list, setList] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     var result = data;
     if (state.cat_id !== 0) {
       result = result.filter((el) => el.cat_id === state.cat_id);

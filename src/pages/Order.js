@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Order = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="pt-[58px]  bg-[#395C4D] h-screen flex items-center justify-center">
       <div className="max-w-3xl w-full">

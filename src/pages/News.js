@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const news = [
@@ -48,6 +48,10 @@ const news = [
 
 const News = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const lastOne = news.slice(-1).pop();
   const other = news.filter((el) => el.id !== lastOne.id);

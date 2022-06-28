@@ -280,14 +280,14 @@ const Home = () => {
   return (
     <div className="pt-[58px]">
       <div className="">
-        <div className="bg-black">
+        <div className="bg-black h-[300px] sm:h-auto">
           <img
             src="/img/home-bg.png"
             alt=""
-            className="opacity-40 object-cover"
+            className="opacity-40 object-cover h-[300px] sm:h-auto"
           />
         </div>
-        <div className="absolute top-[60px] font-bold text-white text-xl w-full text-center">
+        <div className="absolute top-[70px] font-bold text-white text-xl w-full text-center">
           Сальникийн төрөлжсөн дэлгүүр
           <br />
           <span className="text-xs opacity-60 font-normal">
@@ -345,8 +345,14 @@ const Home = () => {
           </Carousel>
         </div>
         <div className="px-4 py-4">
-          <div className="text-[#253D32] text-xl font-bold pb-2">
-            Бүтээгдэхүүн
+          <div className="text-[#253D32] text-xl font-bold pb-2 flex items-center justify-between">
+            <div>Бүтээгдэхүүн</div>
+            <div
+              className="text-xs text-gray-600"
+              onClick={() => navigate("/prodcut")}
+            >
+              Бүгдийг үзэх
+            </div>
           </div>
           <Carousel
             responsive={productConfig}
@@ -371,7 +377,15 @@ const Home = () => {
           </Carousel>
         </div>
         <div className="px-4 pb-4">
-          <div className="text-[#253D32] text-xl font-bold pb-2">Материал</div>
+          <div className="text-[#253D32] text-xl font-bold pb-2 flex items-center justify-between">
+            <div>Материал</div>
+            <div
+              className="text-xs text-gray-600"
+              onClick={() => navigate("/material")}
+            >
+              Бүгдийг үзэх
+            </div>
+          </div>
           <Carousel
             responsive={productConfig}
             removeArrowOnDeviceType={["tablet", "mobile"]}
@@ -395,8 +409,14 @@ const Home = () => {
           </Carousel>
         </div>
         <div className="px-4 pb-4">
-          <div className="text-[#253D32] text-xl font-bold pb-2">
-            Мэдээ, мэдээлэл
+          <div className="text-[#253D32] text-xl font-bold pb-2 flex items-center justify-between">
+            <div>Мэдээ, мэдээлэл</div>
+            <div
+              className="text-xs text-gray-600"
+              onClick={() => navigate("/news")}
+            >
+              Бүгдийг үзэх
+            </div>
           </div>
           <Carousel
             responsive={newsConfig}

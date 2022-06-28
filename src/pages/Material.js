@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const data = [
@@ -36,6 +36,11 @@ const data = [
 
 const Material = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="pt-[58px] flex flex-col justify-center">
       <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5">
