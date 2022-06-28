@@ -16,7 +16,9 @@ const NewsDetail = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setState({ type: "CHANGE_HEADER", data: true });
+    if (window.innerWidth < 640) {
+      setState({ type: "CHANGE_HEADER", data: true });
+    }
   }, [setState]);
 
   return (

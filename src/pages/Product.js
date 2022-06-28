@@ -176,7 +176,7 @@ const Product = () => {
       <Category />
       <div className="pt-[116px] flex flex-col justify-center">
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5">
-          {list.length > 0 &&
+          {list.length > 0 ? (
             list.map((el) => {
               return (
                 <div className="p-4" key={el.id}>
@@ -189,7 +189,10 @@ const Product = () => {
                   <div>{el.name + " " + el.code}</div>
                 </div>
               );
-            })}
+            })
+          ) : (
+            <div className="p-4">Бүтээгдэхүүн олдсонгүй...</div>
+          )}
         </div>
       </div>
     </>
