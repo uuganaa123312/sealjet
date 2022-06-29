@@ -287,10 +287,10 @@ const Home = () => {
             className="opacity-40 object-cover h-[300px] sm:h-auto"
           />
         </div>
-        <div className="absolute top-[70px] font-bold text-white text-xl w-full text-center">
+        <div className="absolute top-[179px] font-bold text-white text-xl w-full text-center uppercase">
           Сальникийн төрөлжсөн дэлгүүр
           <br />
-          <span className="text-xs opacity-60 font-normal">
+          <span className="text-xs opacity-60 font-normal hidden sm:block">
             Монгол - Австрийн хамтарсан Сийл Жет Монгол ХХК нь 2003 оноос эхлэн
             бүх төрлийн авто машин, техник тоног төхөөрөмжийн нягтруулагч
             цагираг, жийргэвч ( сальник )-ийг үйлдвэрлэн дотоодын зах зээлд
@@ -349,7 +349,7 @@ const Home = () => {
             <div>Бүтээгдэхүүн</div>
             <div
               className="text-xs text-gray-600"
-              onClick={() => navigate("/prodcut")}
+              onClick={() => navigate("/product")}
             >
               Бүгдийг үзэх
             </div>

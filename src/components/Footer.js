@@ -11,7 +11,7 @@ const Footer = () => {
         className="pt-4"
       />
       <div className="relative w-full text-center bg-white pt-6 pb-2 border-t">
-        <div className="flex flex-row items-center justify-center mx-4">
+        <div className="flex flex-row items-center justify-between mx-4">
           <div className="p-2 bg-[#395C4D] w-[100px] rounded-2xl flex items-center justify-center">
             <img src="/img/logo.png" alt="" className="text-center" />
           </div>
@@ -21,12 +21,7 @@ const Footer = () => {
             <div>info@sealjet.mn</div>
           </div>
         </div>
-        <div className="px-4 pt-2">
-          Сальникний үйлвэрлэлийн шийдлээр Монгол улсын зах зээлд тэргүүлэх. Мөн
-          дотоодын зах зээлд дараахь үйлдвэрлэл-үйлчилгээг шинээр нэвтрүүлхээр
-          зорьж ажиллаж байна.
-        </div>
-        <div className="pt-2 text-xs">
+        <div className="pt-4 text-xs">
           {"© 2010-" + new Date().getFullYear() + " Seal Jet ХХК."}
           <div>Оюуны өмчийг хуулиар хамгаалсан болно.</div>
         </div>
