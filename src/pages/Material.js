@@ -42,7 +42,7 @@ const Material = () => {
   }, []);
 
   return (
-    <div className="pt-[58px] flex flex-col justify-center">
+    <div className="pt-[58px] flex flex-col justify-center max-w-7xl mx-auto">
       <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5">
         {data.map((el) => {
           return (

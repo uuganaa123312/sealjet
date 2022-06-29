@@ -172,7 +172,7 @@ const Product = () => {
   }, [state.cat_id, state.search_value]);
 
   return (
-    <>
+    <div className="max-w-7xl mx-auto">
       <Category />
       <div className="pt-[116px] flex flex-col justify-center">
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5">
@@ -195,7 +195,7 @@ const Product = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

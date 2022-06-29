@@ -21,7 +21,7 @@ const MaterialDetail = () => {
   }, [setState]);
 
   return (
-    <div className="animate-fade">
+    <div className="animate-fade max-w-7xl mx-auto">
       <div className="fixed left-[7px] top-[7px] sm:hidden">
         <svg
           width={39}

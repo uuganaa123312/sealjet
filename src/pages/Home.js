@@ -344,11 +344,11 @@ const Home = () => {
             />
           </Carousel>
         </div>
-        <div className="px-4 py-4">
+        <div className="px-4 py-4 max-w-7xl mx-auto">
           <div className="text-[#253D32] text-xl font-bold pb-2 flex items-center justify-between">
             <div>Бүтээгдэхүүн</div>
             <div
-              className="text-xs text-gray-600"
+              className="text-xs text-gray-600 pr-4  cursor-pointer"
               onClick={() => navigate("/product")}
             >
               Бүгдийг үзэх
@@ -376,11 +376,11 @@ const Home = () => {
             })}
           </Carousel>
         </div>
-        <div className="px-4 pb-4">
+        <div className="px-4 pb-4 max-w-7xl mx-auto">
           <div className="text-[#253D32] text-xl font-bold pb-2 flex items-center justify-between">
             <div>Материал</div>
             <div
-              className="text-xs text-gray-600"
+              className="text-xs text-gray-600 pr-4  cursor-pointer"
               onClick={() => navigate("/material")}
             >
               Бүгдийг үзэх
@@ -408,11 +408,11 @@ const Home = () => {
             })}
           </Carousel>
         </div>
-        <div className="px-4 pb-4">
+        <div className="px-4 pb-4 max-w-7xl mx-auto">
           <div className="text-[#253D32] text-xl font-bold pb-2 flex items-center justify-between">
             <div>Мэдээ, мэдээлэл</div>
             <div
-              className="text-xs text-gray-600"
+              className="text-xs text-gray-600 pr-4 cursor-pointer"
               onClick={() => navigate("/news")}
             >
               Бүгдийг үзэх

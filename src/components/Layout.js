@@ -5,7 +5,7 @@ import Footer from "./Footer";
 
 const Layout = ({ children }) => {
   return (
-    <div className="font-[Nunito] max-w-7xl mx-auto animate-fade">
+    <div className="font-[Nunito] animate-fade">
       <Header />
       {children}
       <Sidebar />

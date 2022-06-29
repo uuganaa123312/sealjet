@@ -56,7 +56,7 @@ const News = () => {
   const lastOne = news.slice(-1).pop();
   const other = news.filter((el) => el.id !== lastOne.id);
   return (
-    <div className="pt-[58px]">
+    <div className="pt-[58px] max-w-7xl mx-auto">
       {/* topPost */}
       <div className="p-4" onClick={() => navigate("/news/" + lastOne.id)}>
         <img
