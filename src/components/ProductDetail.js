@@ -64,18 +64,24 @@ const ProductDetail = () => {
         </svg>
       </div>
       <div className="flex flex-col items-center justify-center">
-        <div className="">
+        <div className="sm:flex sm:pt-[74px] sm:p-4 sm:items-center sm:justify-center">
           <img
             src="https://utmunbox.com/wp-content/uploads/2020/03/500x500.png"
             alt=""
-            className="rounded-br-3xl rounded-bl-3xl object-cover"
+            className="rounded-br-3xl rounded-bl-3xl object-cover sm:w-[270px] sm:h-[270px] sm:rounded-3xl"
           />
-        </div>
-        <div className="p-4">
-          <div className="text-lg uppercase font-semibold">
-            {data.name + " " + data.code}
+          <div className="px-4 pt-4 sm:pr-20 sm:pt-0">
+            <div className="text-lg uppercase font-semibold">
+              {data.name + " " + data.code}
+            </div>
+            <div>{data.desc}</div>
+            <div className="bg-[#42725D] py-1 w-[180px] text-center rounded-lg text-white font-bold mt-4 cursor-pointer">
+              Захиалах
+            </div>
           </div>
-          <div>{data.desc}</div>
+        </div>
+
+        <div className="px-4 flex flex-col items-start justify-center w-full">
           {data.temp.length > 0 && (
             <div className="text-lg uppercase font-semibold pt-4">
               ТЕМПРАТУР

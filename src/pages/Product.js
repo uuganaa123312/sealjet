@@ -7,7 +7,7 @@ const data = [
   {
     id: 1,
     cat_id: 1,
-    url: "https://utmunbox.com/wp-content/uploads/2020/03/500x500.png",
+    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
     name: "Сальник",
     code: "#1",
     desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
@@ -35,7 +35,7 @@ const data = [
   {
     id: 2,
     cat_id: 2,
-    url: "https://utmunbox.com/wp-content/uploads/2020/03/500x500.png",
+    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
     name: "Сальник",
     code: "#2",
     desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
@@ -63,7 +63,7 @@ const data = [
   {
     id: 3,
     cat_id: 3,
-    url: "https://utmunbox.com/wp-content/uploads/2020/03/500x500.png",
+    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
     name: "Сальник",
     code: "#3",
     desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
@@ -91,7 +91,7 @@ const data = [
   {
     id: 4,
     cat_id: 4,
-    url: "https://utmunbox.com/wp-content/uploads/2020/03/500x500.png",
+    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
     name: "Сальник",
     code: "#4",
     desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
@@ -118,8 +118,92 @@ const data = [
   },
   {
     id: 5,
-    cat_id: 5,
-    url: "https://utmunbox.com/wp-content/uploads/2020/03/500x500.png",
+    cat_id: 2,
+    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
+    name: "Сальник",
+    code: "#5",
+    desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
+    temp: [
+      { id: 1, name: "-30C ... +110C" },
+      { id: 2, name: "-30C ... +110C" },
+    ],
+    speed: [
+      { id: 1, name: "0.5 m/s" },
+      { id: 2, name: "0.5 m/s" },
+    ],
+    pressure: [
+      { id: 1, name: "400 bar (5800 psi)" },
+      { id: 2, name: "400 bar (5800 psi)" },
+    ],
+    material: [
+      { id: 1, type: 1, name: "Экопур" },
+      { id: 2, type: 1, name: "Н-Экопур" },
+      { id: 3, type: 2, name: "NBR (70 Sh A)" },
+      { id: 4, type: 2, name: "NBR (50 Sh B)" },
+      { id: 5, type: 3, name: "Экотал" },
+      { id: 6, type: 3, name: "Экомид" },
+    ],
+  },
+  {
+    id: 6,
+    cat_id: 3,
+    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
+    name: "Сальник",
+    code: "#5",
+    desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
+    temp: [
+      { id: 1, name: "-30C ... +110C" },
+      { id: 2, name: "-30C ... +110C" },
+    ],
+    speed: [
+      { id: 1, name: "0.5 m/s" },
+      { id: 2, name: "0.5 m/s" },
+    ],
+    pressure: [
+      { id: 1, name: "400 bar (5800 psi)" },
+      { id: 2, name: "400 bar (5800 psi)" },
+    ],
+    material: [
+      { id: 1, type: 1, name: "Экопур" },
+      { id: 2, type: 1, name: "Н-Экопур" },
+      { id: 3, type: 2, name: "NBR (70 Sh A)" },
+      { id: 4, type: 2, name: "NBR (50 Sh B)" },
+      { id: 5, type: 3, name: "Экотал" },
+      { id: 6, type: 3, name: "Экомид" },
+    ],
+  },
+  {
+    id: 7,
+    cat_id: 2,
+    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
+    name: "Сальник",
+    code: "#5",
+    desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
+    temp: [
+      { id: 1, name: "-30C ... +110C" },
+      { id: 2, name: "-30C ... +110C" },
+    ],
+    speed: [
+      { id: 1, name: "0.5 m/s" },
+      { id: 2, name: "0.5 m/s" },
+    ],
+    pressure: [
+      { id: 1, name: "400 bar (5800 psi)" },
+      { id: 2, name: "400 bar (5800 psi)" },
+    ],
+    material: [
+      { id: 1, type: 1, name: "Экопур" },
+      { id: 2, type: 1, name: "Н-Экопур" },
+      { id: 3, type: 2, name: "NBR (70 Sh A)" },
+      { id: 4, type: 2, name: "NBR (50 Sh B)" },
+      { id: 5, type: 3, name: "Экотал" },
+      { id: 6, type: 3, name: "Экомид" },
+    ],
+  },
+  {
+    id: 8,
+    cat_id: 1,
+    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
     name: "Сальник",
     code: "#5",
     desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
@@ -152,10 +236,6 @@ const Product = () => {
   const [list, setList] = useState([]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  useEffect(() => {
     var result = data;
     if (state.cat_id !== 0) {
       result = result.filter((el) => el.cat_id === state.cat_id);
@@ -179,14 +259,16 @@ const Product = () => {
           {list.length > 0 ? (
             list.map((el) => {
               return (
-                <div className="p-4" key={el.id}>
+                <div className="m-4 rounded-xl bg-white" key={el.id}>
                   <img
                     src={el.url}
                     alt=""
-                    className="object-cover bg-gray-500 rounded-lg"
+                    className="rounded-t-xl object-cover cursor-pointer"
                     onClick={() => navigate("/product/" + el.id)}
                   />
-                  <div>{el.name + " " + el.code}</div>
+                  <div className="text-xs text-center text-gray-600 py-1 sm:py-2 md:text-base border-t">
+                    {el.name + " " + el.code}
+                  </div>
                 </div>
               );
             })

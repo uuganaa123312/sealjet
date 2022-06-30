@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useSealState } from "../pages/Context";
 
 const Header = () => {
   const { state, setState } = useSealState();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    setState({
+      type: "CHANGE_MENU_URL",
+      data: location.pathname.split("/")[1],
+    });
+  }, [location.pathname, setState]);
 
   return (
     <div
@@ -118,11 +126,20 @@ const Header = () => {
 
         <div className="hidden sm:flex w-full justify-between items-center">
           <div className="flex items-center justify-evenly w-full text-xs md:text-sm lg:text-base font-semibold cursor-default">
-            <Link to="/">Нүүр</Link>
-            <Link to="/material">Материал</Link>
-            <Link to="/product">Бүтээгдэхүүн</Link>
-            <Link to="/news">Мэдээ</Link>
-            <Link to="/order">Захиалах</Link>
+            {state.menu.map((el) => {
+              return (
+                <Link
+                  to={"/" + el.url}
+                  key={el.id}
+                  className={el.url === state.menu_url ? "border-b-2" : ""}
+                  onClick={() =>
+                    setState({ type: "CHANGE_MENU_URL", data: el.url })
+                  }
+                >
+                  {el.name}
+                </Link>
+              );
+            })}
           </div>
           <div>
             <div className="relative text-gray-700">

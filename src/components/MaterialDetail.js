@@ -4,7 +4,7 @@ import { useSealState } from "../pages/Context";
 
 const data = {
   id: 1,
-  url: "https://utmunbox.com/wp-content/uploads/2020/03/500x500.png",
+  url: "https://purepng.com/public/uploads/large/construction-material-zip.png",
   name: "ЭКОРАББЕР",
   desc: "Ногоон єнгєтэй термопластик полиуретан-эластомерийн бїлэгт багтдаг. Тасрах эсэргїїцэл єндєр, бат бєх чанартай. Хэрэглээний хувьд эрдэслэг тосны орчинд ажилдаг. Усанд ажиллахад +40С хїртэл, халуун био тосны орчинд +60С хїртэл температур тэсвэрлэх чадвартай ба сальникийн хэлбэр ажиллах орчиноос хамааран 0.5 м/с-25м/с ийн шилжилт 0.5-700барийн даралт даадаг.",
 };
@@ -21,7 +21,7 @@ const MaterialDetail = () => {
   }, [setState]);
 
   return (
-    <div className="animate-fade max-w-7xl mx-auto">
+    <div className="animate-fade max-w-7xl mx-auto sm:pt-[58px]">
       <div className="fixed left-[7px] top-[7px] sm:hidden">
         <svg
           width={39}
@@ -41,17 +41,19 @@ const MaterialDetail = () => {
           />
         </svg>
       </div>
-      <div className="flex flex-col items-center justify-center">
-        <div className="">
+      <div className="flex flex-col items-center justify-center md:flex-row">
+        <div className="md:w-1/2">
           <img
-            src="https://utmunbox.com/wp-content/uploads/2020/03/500x500.png"
+            src={data.url}
             alt=""
             className="rounded-br-3xl rounded-bl-3xl object-cover"
           />
         </div>
-        <div className="p-4">
-          <div className="text-lg uppercase font-semibold">{data.name}</div>
-          <div>{data.desc}</div>
+        <div className="p-4 md:w-1/2">
+          <div className="text-2xl uppercase font-semibold lg:text-3xl">
+            {data.name}
+          </div>
+          <div className="py-2 lg:py-4 text-justify">{data.desc}</div>
         </div>
       </div>
     </div>
