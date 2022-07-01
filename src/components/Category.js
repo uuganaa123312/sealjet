@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useSealState } from "../pages/Context";
 
 const data = [
@@ -13,16 +14,20 @@ const data = [
 ];
 
 const MobileCat = () => {
+  const navigate = useNavigate();
   const { state, setState } = useSealState();
   return (
-    <div className="fixed top-[58px] left-0 h-[58px] bg-[#42725D] w-full">
+    <div className="fixed top-[58px] left-0 h-[58px] bg-[#42725D] w-full z-10">
       <div className="flex flex-nowrap scrollbar text-gray-100 pl-4 pt-4 pb-4 sm:pb-[18px] cursor-default max-w-7xl mx-auto">
         {data.length > 0 &&
           data.map((el) => {
             return (
               <div
                 key={el.id}
-                onClick={() => setState({ type: "CHANGE_CAT_ID", data: el.id })}
+                onClick={() => {
+                  navigate("/product");
+                  setState({ type: "CHANGE_CAT_ID", data: el.id });
+                }}
                 className={`pr-4 sm:pr-0 sm:mr-10 whitespace-nowrap hover:cursor-pointer sm:hover:text-gray-300 ${
                   state.cat_id === el.id ? "font-bold" : ""
                 }`}

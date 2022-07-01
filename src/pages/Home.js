@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
@@ -375,7 +375,7 @@ const Home = () => {
                     <img
                       src={el.url}
                       alt=""
-                      className="rounded-t-xl h-[94px] sm:h-[102px] md:h-[128px] lg:h-[179px] xl:h-[230px]"
+                      className="rounded-t-xl h-[94px] sm:h-[102px] md:h-[128px] lg:h-[179px] xl:h-[230px] cursor-pointer"
                       onClick={() => navigate("/product/" + el.id)}
                     />
                   </div>
@@ -409,7 +409,7 @@ const Home = () => {
                     <img
                       src={el.url}
                       alt=""
-                      className="rounded-t-xl h-[94px] sm:h-[102px] md:h-[128px] lg:h-[179px] xl:h-[230px]"
+                      className="rounded-t-xl h-[94px] sm:h-[102px] md:h-[128px] lg:h-[179px] xl:h-[230px] cursor-pointer"
                       onClick={() => navigate("/material/" + el.id)}
                     />
                   </div>
@@ -444,7 +444,7 @@ const Home = () => {
                     <img
                       src={el.url}
                       alt=""
-                      className="rounded-t-xl w-full"
+                      className="rounded-t-xl w-full cursor-pointer"
                       onClick={() => navigate("/news/" + el.id)}
                     />
                   </div>

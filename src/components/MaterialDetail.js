@@ -41,15 +41,15 @@ const MaterialDetail = () => {
           />
         </svg>
       </div>
-      <div className="flex flex-col items-center justify-center md:flex-row">
-        <div className="md:w-1/2">
+      <div className="bg-white flex flex-col items-center justify-center md:flex-row sm:my-10 sm:rounded-lg">
+        <div className="md:w-1/2 flex items-center justify-center">
           <img
             src={data.url}
             alt=""
             className="rounded-br-3xl rounded-bl-3xl object-cover"
           />
         </div>
-        <div className="p-4 md:w-1/2">
+        <div className="p-4 md:w-1/2 flex items-center justify-center flex-col">
           <div className="text-2xl uppercase font-semibold lg:text-3xl">
             {data.name}
           </div>

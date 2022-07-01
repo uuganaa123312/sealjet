@@ -77,7 +77,7 @@ const Header = () => {
             }}
           />
         ) : (
-          <div className="cursor-default">
+          <div className="cursor-pointer">
             <img
               src="/img/logo.png"
               alt=""
