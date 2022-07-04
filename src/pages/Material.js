@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSealState } from "../pages/Context";
 
 const material = [
   {
@@ -54,10 +55,14 @@ const material = [
 
 const Material = () => {
   const navigate = useNavigate();
+  const { setState } = useSealState();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    if (window.innerWidth < 640) {
+      setState({ type: "CHANGE_HEADER", data: false });
+    }
+  }, [setState]);
 
   return (
     <div className="pt-[58px] flex flex-col justify-center max-w-7xl mx-auto">

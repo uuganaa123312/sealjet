@@ -232,8 +232,14 @@ const data = [
 
 const Product = () => {
   const navigate = useNavigate();
-  const { state } = useSealState();
+  const { state, setState } = useSealState();
   const [list, setList] = useState([]);
+
+  useEffect(() => {
+    if (window.innerWidth < 640) {
+      setState({ type: "CHANGE_HEADER", data: false });
+    }
+  }, [setState]);
 
   useEffect(() => {
     var result = data;

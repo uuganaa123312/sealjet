@@ -11,40 +11,21 @@ const Sidebar = () => {
       }`}
     >
       <div className="flex flex-col justify-center px-6 py-20 font-semibold text-lg text-gray-100">
-        <Link
-          to="/"
-          onClick={() => setState({ type: "CHANGE_TOGGLE", data: false })}
-        >
-          Нүүр
-        </Link>
-        <Link
-          to="/material"
-          onClick={() => setState({ type: "CHANGE_TOGGLE", data: false })}
-          className="pt-6"
-        >
-          Материал
-        </Link>
-        <Link
-          to="/product"
-          onClick={() => setState({ type: "CHANGE_TOGGLE", data: false })}
-          className="pt-6"
-        >
-          Бүтээгдэхүүн
-        </Link>
-        <Link
-          to="/news"
-          onClick={() => setState({ type: "CHANGE_TOGGLE", data: false })}
-          className="pt-6"
-        >
-          Мэдээ
-        </Link>
-        <Link
-          to="/order"
-          onClick={() => setState({ type: "CHANGE_TOGGLE", data: false })}
-          className="pt-6"
-        >
-          Захиалга
-        </Link>
+        {state.menu.map((el) => {
+          return (
+            <Link
+              key={el.id}
+              to={el.url}
+              className={el.url === state.menu_url ? "border-b-2 pt-6" : "pt-6"}
+              onClick={() => {
+                setState({ type: "CHANGE_TOGGLE", data: false });
+                setState({ type: "CHANGE_MENU_URL", data: el.url });
+              }}
+            >
+              {el.name}
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

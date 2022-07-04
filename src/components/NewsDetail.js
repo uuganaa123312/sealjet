@@ -43,7 +43,11 @@ const NewsDetail = () => {
         </svg>
       </div>
       <div className="">
-        <img src={data.url} alt="" className="h-[250px] w-full object-cover" />
+        <img
+          src={data.url}
+          alt=""
+          className="h-[250px] w-full object-cover md:h-[250px] lg:h-[450px]"
+        />
         <div className="bg-white rounded-tr-3xl rounded-tl-3xl w-full -mt-4 inline-block p-4">
           <div className="text-sm">12 сарын 15</div>
           <div className="text-xl font-bold pt-3">

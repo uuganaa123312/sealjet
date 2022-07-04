@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSealState } from "../pages/Context";
 
 const news = [
   {
@@ -48,10 +49,14 @@ const news = [
 
 const News = () => {
   const navigate = useNavigate();
+  const { setState } = useSealState();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    if (window.innerWidth < 640) {
+      setState({ type: "CHANGE_HEADER", data: false });
+    }
+  }, [setState]);
 
   const lastOne = news.slice(-1).pop();
   const lastFour = news
@@ -91,7 +96,8 @@ const News = () => {
                 <img
                   src={lastOne?.url}
                   alt=""
-                  className="w-full h-full object-cover rounded-lg cursor-default"
+                  className="w-full h-full object-cover rounded-lg cursor-pointer"
+                  onClick={() => navigate("/news/" + lastOne?.id)}
                 />
                 <div
                   className="absolute bottom-2 left-1/2 w-full text-center text-white font-bold"
@@ -112,7 +118,10 @@ const News = () => {
                     className="w-[48%] h-[48%] flex items-center justify-center"
                     key={el.id}
                   >
-                    <div className="relative w-full h-full cursor-default">
+                    <div
+                      className="relative w-full h-full cursor-pointer"
+                      onClick={() => navigate("/news/" + el.id)}
+                    >
                       <img
                         src={el.url}
                         alt=""

@@ -131,7 +131,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="relative w-full text-center bg-white pt-6 pb-2 border-t md:hidden">
+      <div className="relative w-full text-center bg-white py-6 border-t md:hidden">
         <div className="flex flex-row items-center justify-between mx-4">
           <div className="p-2 bg-[#395C4D] w-[100px] rounded-2xl flex items-center justify-center">
             <img src="/img/logo.png" alt="" className="text-center" />
