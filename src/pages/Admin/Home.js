@@ -95,7 +95,7 @@ const Home = () => {
       </div>
       {/* sidebar */}
       {/* content */}
-      <div className="ml-[267px] mt-[65px]">hihihihihihih</div>
+      <div className="ml-[267px] mt-[65px]">asdfasdf</div>
       {/* content */}
     </div>
   );
