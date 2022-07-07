@@ -140,6 +140,11 @@ const Header = () => {
                 </Link>
               );
             })}
+            {state.loggedIn ? (
+              <Link to="/admin">Админ</Link>
+            ) : (
+              <Link to="/login">Нэвтрэх</Link>
+            )}
           </div>
           <div>
             <div className="relative text-gray-700">

@@ -1,9 +1,11 @@
-import React, { useContext, useReducer } from "react";
+import React, { useContext, useReducer, useEffect } from "react";
 import Reducer from "../pages/Reducer";
 
 const Context = React.createContext();
 
 const initialState = {
+  userInfo: {},
+  loggedIn: false,
   header: false,
   menu: [
     { id: 1, url: "", name: "Нүүр" },
@@ -31,11 +33,25 @@ export const useSealState = () => {
 const ContextProvider = ({ children }) => {
   const [state, setState] = useReducer(Reducer, initialState);
 
+  const logOut = () => {
+    localStorage.removeItem("data");
+    setState({ type: "LOGOUT" });
+    window.location = "/";
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem("data")) {
+      const userdata = localStorage.getItem("data");
+      setState({ type: "LOGIN", data: JSON.parse(userdata) });
+    }
+  }, []);
+
   return (
     <Context.Provider
       value={{
         state,
         setState,
+        logOut,
       }}
     >
       {children}

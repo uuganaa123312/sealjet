@@ -275,6 +275,23 @@ const news = [
   },
 ];
 
+const logo = [
+  { img: "/img/Rectangle348.png", url: "https://google.com" },
+  { img: "/img/Rectangle349.png", url: "https://google.com" },
+  { img: "/img/Rectangle350.png", url: "https://google.com" },
+  { img: "/img/Rectangle351.png", url: "https://google.com" },
+  { img: "/img/Rectangle352.png", url: "https://google.com" },
+  { img: "/img/Rectangle353.png", url: "https://google.com" },
+  { img: "/img/Rectangle354.png", url: "https://google.com" },
+];
+
+const main = {
+  url1: "/img/home-bg.png",
+  url2: "/img/home-s.png",
+  title: "Сальникийн төрөлжсөн дэлгүүр",
+  desc: "Монгол - Австрийн хамтарсан Сийл Жет Монгол ХХК нь 2003 оноос эхлэн бүх төрлийн авто машин, техник тоног төхөөрөмжийн нягтруулагч цагираг, жийргэвч ( сальник )-ийг үйлдвэрлэн дотоодын зах зээлд нийлүүлж байна.",
+};
+
 const Home = () => {
   const navigate = useNavigate();
   return (
@@ -282,7 +299,7 @@ const Home = () => {
       <div className="">
         <div className="bg-black">
           <img
-            src="/img/home-bg.png"
+            src={main.url1}
             alt=""
             className="opacity-40 object-cover h-[300px] w-full sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]"
           />
@@ -290,18 +307,15 @@ const Home = () => {
         <div className="absolute top-[179px] font-bold text-white text-xl w-full text-center uppercase">
           <div className="flex items-center justify-center max-w-7xl mx-auto px-4">
             <img
-              src="/img/home-s.png"
+              src={main.url2}
               alt=""
               className="w-[40%] h-[280px] object-cover hidden md:block md:flex-1"
             />
             <div className="w-[60%] lg:text-3xl">
-              Сальникийн төрөлжсөн дэлгүүр
+              {main.title}
               <br />
               <span className="text-xs opacity-60 font-normal hidden sm:block md:flex-1 md:pt-2 lg:text-base">
-                Монгол - Австрийн хамтарсан Сийл Жет Монгол ХХК нь 2003 оноос
-                эхлэн бүх төрлийн авто машин, техник тоног төхөөрөмжийн
-                нягтруулагч цагираг, жийргэвч ( сальник )-ийг үйлдвэрлэн
-                дотоодын зах зээлд нийлүүлж байна.
+                {main.desc}
               </span>
             </div>
           </div>
@@ -316,41 +330,19 @@ const Home = () => {
             autoPlaySpeed={3000}
             removeArrowOnDeviceType={["tablet", "mobile"]}
           >
-            <img
-              src="/img/Rectangle 348.png"
-              alt=""
-              className="w-10 h-10 object-cover lg:w-20 lg:h-20"
-            />
-            <img
-              src="/img/Rectangle 349.png"
-              alt=""
-              className="w-10 h-10 object-cover lg:w-20 lg:h-20"
-            />
-            <img
-              src="/img/Rectangle 350.png"
-              alt=""
-              className="w-10 h-10 object-cover lg:w-20 lg:h-20"
-            />
-            <img
-              src="/img/Rectangle 351.png"
-              alt=""
-              className="w-10 h-10 object-cover lg:w-20 lg:h-20"
-            />
-            <img
-              src="/img/Rectangle 352.png"
-              alt=""
-              className="w-10 h-10 object-cover lg:w-20 lg:h-20"
-            />
-            <img
-              src="/img/Rectangle 353.png"
-              alt=""
-              className="w-10 h-10 object-cover lg:w-20 lg:h-20"
-            />
-            <img
-              src="/img/Rectangle 354.png"
-              alt=""
-              className="w-10 h-10 object-cover lg:w-20 lg:h-20"
-            />
+            {logo.map((el, index) => {
+              return (
+                <img
+                  key={index}
+                  src={el.img}
+                  alt=""
+                  className="w-10 h-10 object-cover lg:w-20 lg:h-20 cursor-pointer"
+                  onClick={() => {
+                    window.open(el.url, "_blank");
+                  }}
+                />
+              );
+            })}
           </Carousel>
         </div>
         <div className="px-4 py-4 max-w-7xl mx-auto lg:my-6">

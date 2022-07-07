@@ -1,5 +1,16 @@
 import React from "react";
 
+const footer = {
+  address:
+    "109-2, 13th microregion, Narnii zam, 25th khoroo, Улаанбаатар 13374",
+  url: "/img/footer.png",
+  phone: "+976 9999-1111",
+  email: "info@sealjet.mn",
+  facebook: "https://www.facebook.com/",
+  instagram: "https://www.instagram.com/",
+  twitter: "https://twitter.com/",
+};
+
 const Footer = () => {
   return (
     <div>
@@ -13,10 +24,7 @@ const Footer = () => {
         <div className="flex items-center justify-between max-w-7xl mx-auto px-4 pt-10">
           <div className="text-white">
             <div className="text-3xl font-bold">Хаяг байршил:</div>
-            <div>
-              109-2, 13th microregion, Narnii zam, 25th khoroo, Улаанбаатар
-              13374
-            </div>
+            <div>{footer.address}</div>
           </div>
           <div className="flex">
             <svg
@@ -51,7 +59,7 @@ const Footer = () => {
         <div className="flex items-center justify-between max-w-7xl mx-auto px-4 pb-10">
           <div className="h-[200px] lg:h-[300px] flex flex-col items-center justify-center text-white">
             <img
-              src="/img/footer.png"
+              src={footer.url}
               alt=""
               className="w-[300px] h-[150px] object-cover lg:w-[403px] lg:h-[227px]"
             />
@@ -72,7 +80,7 @@ const Footer = () => {
               viewBox="0 0 40 41"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              onClick={() => window.open("https://www.facebook.com/", "_blank")}
+              onClick={() => window.open(footer.facebook, "_blank")}
             >
               <path
                 fillRule="evenodd"
@@ -89,7 +97,7 @@ const Footer = () => {
               viewBox="0 0 40 41"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              onClick={() => window.open("https://twitter.com/", "_blank")}
+              onClick={() => window.open(footer.twitter, "_blank")}
             >
               <path
                 fillRule="evenodd"
@@ -106,9 +114,7 @@ const Footer = () => {
               viewBox="0 0 40 41"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              onClick={() =>
-                window.open("https://www.instagram.com/", "_blank")
-              }
+              onClick={() => window.open(footer.instagram, "_blank")}
             >
               <path
                 d="M20 24C18.125 24 16.5 22.5 16.5 20.5C16.5 18.625 18 17 20 17C21.875 17 23.5 18.5 23.5 20.5C23.5 22.375 21.875 24 20 24Z"
@@ -131,15 +137,21 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="relative w-full text-center bg-white py-6 border-t md:hidden">
+      <div
+        className="relative w-full text-center py-6 border-t md:hidden text-white"
+        style={{
+          background:
+            "linear-gradient(149.33deg, #395C4D 0.87%, #132D1F 94.27%)",
+        }}
+      >
         <div className="flex flex-row items-center justify-between mx-4">
           <div className="p-2 bg-[#395C4D] w-[100px] rounded-2xl flex items-center justify-center">
             <img src="/img/logo.png" alt="" className="text-center" />
           </div>
           <div className="pl-10">
             <div className="font-bold">Холбоо барих</div>
-            <div>+976 9999-1111</div>
-            <div>info@sealjet.mn</div>
+            <div>{footer.phone}</div>
+            <div>{footer.email}</div>
           </div>
         </div>
         <div className="pt-4 text-xs">

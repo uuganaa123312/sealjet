@@ -1,5 +1,16 @@
 const Reducer = (state, action) => {
   switch (action.type) {
+    case "LOGIN":
+      return {
+        ...state,
+        userInfo: action.data,
+        loggedIn: true,
+      };
+    case "LOGOUT":
+      return {
+        ...state,
+        loggedIn: false,
+      };
     case "CHANGE_HEADER":
       return {
         ...state,
