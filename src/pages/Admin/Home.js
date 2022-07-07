@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useSealState } from "../../pages/Context";
 
 const Home = () => {
   const navigate = useNavigate();
-  const { logOut } = useSealState();
-  const [file, setFile] = useState();
 
   return (
     <div className="">
