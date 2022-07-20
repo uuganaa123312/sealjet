@@ -29,7 +29,7 @@ const Login = () => {
     } else {
       axios
         .post(
-          "http://mmmall.mn/api/auth/login",
+          "https://mmmall.mn/api/sealjet/auth/login",
           { username: username, password: password },
           {
             "Content-Type": "application/json",

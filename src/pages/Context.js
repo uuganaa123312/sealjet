@@ -14,6 +14,13 @@ const initialState = {
     { id: 4, url: "news", name: "Мэдээ" },
     { id: 5, url: "order", name: "Захиалах" },
   ],
+  admin_menu: [
+    { id: 1, url: "", class: "fa-regular fa-square-check", name: "Захиалга" },
+    { id: 2, url: "", class: "fa-brands fa-codepen", name: "Бүтээгдэхүүн" },
+    { id: 3, url: "", class: "fa-regular fa-file-lines", name: "Мэдээ" },
+    { id: 4, url: "", class: "fa-solid fa-box-archive", name: "Материал" },
+    { id: 5, url: "", class: "fa-solid fa-gear", name: "Тохиргоо" },
+  ],
   menu_url: undefined,
   sidebar: false,
   toggle: false,

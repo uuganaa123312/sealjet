@@ -1,13 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useSealState } from "../Context";
 
 const Home = () => {
+  const { state, setState } = useSealState();
   const navigate = useNavigate();
 
   return (
     <div className="">
       <div className="fixed top-0 right-0 flex gap-5 p-5">
-        <div>User name</div>
+        <div>{state?.userInfo?.username}</div>
         <svg
           width={25}
           height={25}
@@ -82,12 +84,23 @@ const Home = () => {
             />
           </svg>
         </div>
-        <div className="text-white">
-          <i className="fa-regular fa-square-check"></i>
-          <i className="fa-brands fa-codepen"></i>
-          <i className="fa-regular fa-file-lines"></i>
-          <i className="fa-solid fa-box-archive"></i>
-          <i className="fa-solid fa-gear"></i>
+        <div className="flex flex-col font-[roboto]">
+          {state.admin_menu.map((el) => {
+            return (
+              <div className={`flex items-center mx-5 mt-5 text-gray-300`}>
+                <i className={`${el.class} text-xl`}></i>
+                <div className="pl-3">{el.name}</div>
+              </div>
+            );
+          })}
+          <div className="flex items-center mx-5 mt-5 text-white border-r">
+            <i className="fa-regular fa-square-check text-xl"></i>
+            <div className="pl-3">Захиалга</div>
+          </div>
+          <div className="flex items-center mx-5 mt-5 text-gray-300">
+            <i className="fa-regular fa-square-check text-xl"></i>
+            <div className="pl-3">Захиалга</div>
+          </div>
         </div>
       </div>
       {/* sidebar */}
