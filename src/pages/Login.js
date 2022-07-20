@@ -39,7 +39,7 @@ const Login = () => {
           if (res.data.success) {
             localStorage.setItem("data", JSON.stringify(res.data));
             setState({ type: "LOGIN", data: res.data });
-            navigate("/admin", { replace: true });
+            navigate("/admin/order", { replace: true });
           } else {
             Swal.fire({
               icon: "warning",

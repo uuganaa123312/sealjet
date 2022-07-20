@@ -13,10 +13,17 @@ import News from "./News";
 import NewsDetail from "../components/NewsDetail";
 import Order from "./Order";
 import Login from "./Login";
-import AdminHome from "./Admin/Home";
+import AdminLayout from "./Admin/Layout";
+
+import AdminOrder from "../components/Admin/Order";
+import AdminMaterial from "../components/Admin/Material";
+import AdminNews from "../components/Admin/News";
+import AdminProduct from "../components/Admin/Product";
+import AdminSetting from "../components/Admin/Setting";
 
 const Router = () => {
   const { state } = useSealState();
+
   return (
     <Routes>
       <Route
@@ -86,14 +93,52 @@ const Router = () => {
 
       <Route path="/login" element={<Login />} />
       <Route
-        path="/admin"
+        path="/admin/order"
         element={
-          state.loggedIn ? (
-            <AdminHome />
-          ) : (
-            <div className="text-2xl text-center py-10 text-gray-800">
-              Таны хайсан хуудас олдсонгүй.
-            </div>
+          state.loggedIn && (
+            <AdminLayout>
+              <AdminOrder />
+            </AdminLayout>
+          )
+        }
+      />
+      <Route
+        path="/admin/product"
+        element={
+          state.loggedIn && (
+            <AdminLayout>
+              <AdminProduct />
+            </AdminLayout>
+          )
+        }
+      />
+      <Route
+        path="/admin/news"
+        element={
+          state.loggedIn && (
+            <AdminLayout>
+              <AdminNews />
+            </AdminLayout>
+          )
+        }
+      />
+      <Route
+        path="/admin/material"
+        element={
+          state.loggedIn && (
+            <AdminLayout>
+              <AdminMaterial />
+            </AdminLayout>
+          )
+        }
+      />
+      <Route
+        path="/admin/setting"
+        element={
+          state.loggedIn && (
+            <AdminLayout>
+              <AdminSetting />
+            </AdminLayout>
           )
         }
       />

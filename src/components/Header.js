@@ -141,7 +141,7 @@ const Header = () => {
               );
             })}
             {state.loggedIn ? (
-              <Link to="/admin">Админ</Link>
+              <Link to="/admin/order">Админ</Link>
             ) : (
               <Link to="/login">Нэвтрэх</Link>
             )}

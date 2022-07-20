@@ -26,6 +26,29 @@ const Sidebar = () => {
             </Link>
           );
         })}
+        {state.loggedIn ? (
+          <Link
+            to="/admin/order"
+            className="pt-6"
+            onClick={() => {
+              setState({ type: "CHANGE_TOGGLE", data: false });
+              setState({ type: "CHANGE_MENU_URL", data: "/admin/order" });
+            }}
+          >
+            Админ
+          </Link>
+        ) : (
+          <Link
+            to="/login"
+            className="pt-6"
+            onClick={() => {
+              setState({ type: "CHANGE_TOGGLE", data: false });
+              setState({ type: "CHANGE_MENU_URL", data: "/login" });
+            }}
+          >
+            Нэвтрэх
+          </Link>
+        )}
       </div>
     </div>
   );
