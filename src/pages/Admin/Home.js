@@ -82,7 +82,7 @@ const Home = () => {
             />
           </svg>
         </div>
-        <div className="">
+        <div className="text-white">
           <i className="fa-regular fa-square-check"></i>
           <i className="fa-brands fa-codepen"></i>
           <i className="fa-regular fa-file-lines"></i>
