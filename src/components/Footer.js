@@ -1,17 +1,32 @@
-import React from "react";
-
-const footer = {
-  address:
-    "109-2, 13th microregion, Narnii zam, 25th khoroo, Улаанбаатар 13374",
-  url: "/img/footer.png",
-  phone: "+976 9999-1111",
-  email: "info@sealjet.mn",
-  facebook: "https://www.facebook.com/",
-  instagram: "https://www.instagram.com/",
-  twitter: "https://twitter.com/",
-};
+import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import * as API from "../api/requests";
 
 const Footer = () => {
+  const [footer, setfooter] = useState();
+  useEffect(() => {
+    API.getFooter()
+      .then((res) => {
+        if (res.data.success) {
+          setfooter({
+            address: res.data.data[0].address,
+            url: res.data.data[0].url,
+            phone: res.data.data[0].phone,
+            email: res.data.data[0].email,
+            facebook: res.data.data[0].facebook,
+            instagram: res.data.data[0].instagram,
+            twitter: res.data.data[0].twitter,
+          });
+        }
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          text: err,
+          confirmButtonColor: "#0f56b3",
+        });
+      });
+  }, []);
   return (
     <div>
       <div
@@ -24,7 +39,7 @@ const Footer = () => {
         <div className="flex items-center justify-between max-w-7xl mx-auto px-4 pt-10">
           <div className="text-white">
             <div className="text-3xl font-bold">Хаяг байршил:</div>
-            <div>{footer.address}</div>
+            <div>{footer?.address}</div>
           </div>
           <div className="flex">
             <svg
@@ -59,7 +74,7 @@ const Footer = () => {
         <div className="flex items-center justify-between max-w-7xl mx-auto px-4 pb-10">
           <div className="h-[200px] lg:h-[300px] flex flex-col items-center justify-center text-white">
             <img
-              src={footer.url}
+              src={"https://mmmall.mn/" + footer?.url}
               alt=""
               className="w-[300px] h-[150px] object-cover lg:w-[403px] lg:h-[227px]"
             />
@@ -80,7 +95,7 @@ const Footer = () => {
               viewBox="0 0 40 41"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              onClick={() => window.open(footer.facebook, "_blank")}
+              onClick={() => window.open(footer?.facebook, "_blank")}
             >
               <path
                 fillRule="evenodd"
@@ -97,7 +112,7 @@ const Footer = () => {
               viewBox="0 0 40 41"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              onClick={() => window.open(footer.twitter, "_blank")}
+              onClick={() => window.open(footer?.twitter, "_blank")}
             >
               <path
                 fillRule="evenodd"
@@ -114,7 +129,7 @@ const Footer = () => {
               viewBox="0 0 40 41"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              onClick={() => window.open(footer.instagram, "_blank")}
+              onClick={() => window.open(footer?.instagram, "_blank")}
             >
               <path
                 d="M20 24C18.125 24 16.5 22.5 16.5 20.5C16.5 18.625 18 17 20 17C21.875 17 23.5 18.5 23.5 20.5C23.5 22.375 21.875 24 20 24Z"
@@ -150,8 +165,8 @@ const Footer = () => {
           </div>
           <div className="pl-10">
             <div className="font-bold">Холбоо барих</div>
-            <div>{footer.phone}</div>
-            <div>{footer.email}</div>
+            <div>{footer?.phone}</div>
+            <div>{footer?.email}</div>
           </div>
         </div>
         <div className="pt-4 text-xs">

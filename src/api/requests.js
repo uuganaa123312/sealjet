@@ -58,13 +58,11 @@ const createInstance = (baseURL) => {
 };
 
 // Footer
-export async function postFooter(formData) {
-  const response = await SEALJET().post("/footer", formData);
-  return response;
-}
-
-export async function putFooter(formData, id) {
-  const response = await SEALJET().put("/footer/" + id, formData);
+export async function putFooter(formData) {
+  const response = await SEALJET().put(
+    "/footer/62d909d85abfdf140a578cda",
+    formData
+  );
   return response;
 }
 
