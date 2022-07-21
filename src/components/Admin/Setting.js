@@ -102,11 +102,7 @@ const Setting = () => {
                 url.name ? (
                   url.name
                 ) : (
-                  <img
-                    src={"https://mmmall.mn" + url}
-                    alt=""
-                    className="w-full"
-                  />
+                  <img src={"https://mmmall.mn" + url} alt="" className="" />
                 )
               ) : (
                 <div className="flex flex-col justify-center items-center pt-5 pb-6">
