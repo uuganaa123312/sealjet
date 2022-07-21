@@ -8,11 +8,11 @@ const initialState = {
   loggedIn: false,
   header: false,
   menu: [
-    { id: 1, url: "", name: "Нүүр" },
-    { id: 2, url: "material", name: "Материал" },
-    { id: 3, url: "product", name: "Бүтээгдэхүүн" },
-    { id: 4, url: "news", name: "Мэдээ" },
-    { id: 5, url: "order", name: "Захиалах" },
+    { id: 1, url: "/", name: "Нүүр" },
+    { id: 2, url: "/material", name: "Материал" },
+    { id: 3, url: "/product", name: "Бүтээгдэхүүн" },
+    { id: 4, url: "/news", name: "Мэдээ" },
+    { id: 5, url: "/order", name: "Захиалах" },
   ],
   admin_menu: [
     {

@@ -1,12 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useSealState } from "../pages/Context";
 
 const Sidebar = () => {
+  const location = useLocation();
   const { state, setState } = useSealState();
   return (
     <div
-      className={`top-0 -left-[100vw] w-[100vw] bg-[#395C4D] fixed h-full rounded-tr-xl rounded-br-xl ease-in-out duration-300 z-10 ${
+      className={`top-0 -left-[100vw] w-[100vw] bg-[#395C4D] fixed h-full ease-in-out duration-300 z-10 ${
         state.toggle ? "translate-x-full" : "translate-x-0"
       }`}
     >
@@ -16,10 +17,11 @@ const Sidebar = () => {
             <Link
               key={el.id}
               to={el.url}
-              className={el.url === state.menu_url ? "border-b-2 pt-6" : "pt-6"}
+              className={
+                el.url === location.pathname ? "border-b-2 pt-6" : "pt-6"
+              }
               onClick={() => {
                 setState({ type: "CHANGE_TOGGLE", data: false });
-                setState({ type: "CHANGE_MENU_URL", data: el.url });
               }}
             >
               {el.name}
@@ -32,7 +34,6 @@ const Sidebar = () => {
             className="pt-6"
             onClick={() => {
               setState({ type: "CHANGE_TOGGLE", data: false });
-              setState({ type: "CHANGE_MENU_URL", data: "/admin/order" });
             }}
           >
             Админ
@@ -43,7 +44,6 @@ const Sidebar = () => {
             className="pt-6"
             onClick={() => {
               setState({ type: "CHANGE_TOGGLE", data: false });
-              setState({ type: "CHANGE_MENU_URL", data: "/login" });
             }}
           >
             Нэвтрэх
