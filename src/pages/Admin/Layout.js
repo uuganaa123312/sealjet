@@ -9,7 +9,7 @@ const Home = ({ children }) => {
 
   return (
     <div>
-      <div className="fixed top-0 right-0 flex gap-5 p-5">
+      <div className="fixed top-0 right-0 flex gap-5 p-5 ">
         <div>{state?.userInfo?.username}</div>
         <svg
           width={25}

@@ -76,9 +76,6 @@ const Order = () => {
                 <div>{el.product}</div>
                 <div>{moment(el.createdDate).format("YYYY-MM-DD")}</div>
                 <div className="flex text-xs">
-                  <div className="py-1 px-2 bg-[#395C4D] text-gray-100 rounded-md flex items-center justify-center cursor-pointer mr-1">
-                    Үндсэн харах
-                  </div>
                   <div
                     className="py-1 px-2 bg-[#395C4D] text-gray-100 rounded-md flex items-center justify-center cursor-pointer ml-1"
                     onClick={() => Delete(el.id)}

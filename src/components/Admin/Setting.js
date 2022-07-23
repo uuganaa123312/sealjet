@@ -45,7 +45,7 @@ const Setting = () => {
             Swal.fire({
               icon: "success",
               title: "Амжилттай хадгалагдлаа.",
-              confirmButtonColor: "#0f56b3",
+              confirmButtonColor: "#395C4D",
               timer: 1500,
             });
           }
@@ -54,7 +54,7 @@ const Setting = () => {
           Swal.fire({
             icon: "error",
             text: err,
-            confirmButtonColor: "#0f56b3",
+            confirmButtonColor: "#395C4D",
           });
         });
     }
@@ -77,7 +77,7 @@ const Setting = () => {
         Swal.fire({
           icon: "error",
           text: err,
-          confirmButtonColor: "#0f56b3",
+          confirmButtonColor: "#395C4D",
         });
       });
   }, []);

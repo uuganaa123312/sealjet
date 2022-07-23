@@ -16,11 +16,6 @@ const Reducer = (state, action) => {
         ...state,
         header: action.data,
       };
-    case "CHANGE_MENU_URL":
-      return {
-        ...state,
-        menu_url: action.data,
-      };
     case "CHANGE_SIDEBAR":
       return {
         ...state,

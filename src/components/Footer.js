@@ -23,7 +23,7 @@ const Footer = () => {
         Swal.fire({
           icon: "error",
           text: err,
-          confirmButtonColor: "#0f56b3",
+          confirmButtonColor: "#395C4D",
         });
       });
   }, []);

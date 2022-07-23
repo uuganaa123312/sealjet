@@ -46,7 +46,6 @@ const initialState = {
       name: "Тохиргоо",
     },
   ],
-  menu_url: undefined,
   sidebar: false,
   toggle: false,
   search_value: "",

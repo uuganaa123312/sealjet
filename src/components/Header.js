@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSealState } from "../pages/Context";
@@ -7,13 +7,6 @@ const Header = () => {
   const { state, setState } = useSealState();
   const navigate = useNavigate();
   const location = useLocation();
-
-  useEffect(() => {
-    setState({
-      type: "CHANGE_MENU_URL",
-      data: location.pathname.split("/")[1],
-    });
-  }, [location.pathname, setState]);
 
   return (
     <div
@@ -129,11 +122,12 @@ const Header = () => {
             {state.menu.map((el) => {
               return (
                 <Link
-                  to={"/" + el.url}
+                  to={el.url}
                   key={el.id}
-                  className={el.url === state.menu_url ? "border-b-2" : ""}
-                  onClick={() =>
-                    setState({ type: "CHANGE_MENU_URL", data: el.url })
+                  className={
+                    el.url === "/" + location.pathname.split("/")[1]
+                      ? "border-b-2"
+                      : ""
                   }
                 >
                   {el.name}

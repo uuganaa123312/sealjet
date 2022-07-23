@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import * as API from "../api/requests";
 
 const Order = () => {
-  const [name, setName] = useState();
-  const [phone, setPhone] = useState();
-  const [email, setEmail] = useState();
-  const [product, setProduct] = useState();
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [product, setProduct] = useState("");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -24,7 +25,33 @@ const Order = () => {
         confirmButtonColor: "#395C4D",
       });
     } else {
-      alert("Амжилттай.");
+      API.postOrder({
+        name: name,
+        phone: phone,
+        email: email,
+        product: product,
+      })
+        .then((res) => {
+          if (res.data.success) {
+            setName("");
+            setPhone("");
+            setEmail("");
+            setProduct("");
+            Swal.fire({
+              icon: "success",
+              title: "Амжилттай илгээгдлээ.",
+              text: "Бид удахгүй таньтай холбогдох болно.",
+              confirmButtonColor: "#395C4D",
+            });
+          }
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: "error",
+            text: err,
+            confirmButtonColor: "#395C4D",
+          });
+        });
     }
   };
 

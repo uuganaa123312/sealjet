@@ -84,3 +84,43 @@ export async function getFooter() {
   return response;
 }
 // Footer
+// News
+export async function postNews(id, formData) {
+  if (id === "new") {
+    const response = await SEALJET().post("/news", formData);
+    return response;
+  } else {
+    const response = await SEALJET().put("/news/" + id, formData);
+
+    return response;
+  }
+}
+export async function getNews() {
+  const response = await SEALJET().get("/news");
+  return response;
+}
+export async function deleteNews(id) {
+  const response = await SEALJET().delete("/news/" + id);
+  return response;
+}
+// News
+// Material
+export async function postMaterial(id, formData) {
+  if (id === "new") {
+    const response = await SEALJET().post("/material", formData);
+    return response;
+  } else {
+    const response = await SEALJET().put("/material/" + id, formData);
+
+    return response;
+  }
+}
+export async function getMaterial() {
+  const response = await SEALJET().get("/material");
+  return response;
+}
+export async function deleteMaterial(id) {
+  const response = await SEALJET().delete("/material/" + id);
+  return response;
+}
+// Material
