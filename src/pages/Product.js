@@ -2,238 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Category from "../components/Category";
 import { useSealState } from "./Context";
-
-const data = [
-  {
-    id: 1,
-    cat_id: 1,
-    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
-    name: "Сальник",
-    code: "#1",
-    desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
-    temp: [
-      { id: 1, name: "-30C ... +110C" },
-      { id: 2, name: "-30C ... +110C" },
-    ],
-    speed: [
-      { id: 1, name: "0.5 m/s" },
-      { id: 2, name: "0.5 m/s" },
-    ],
-    pressure: [
-      { id: 1, name: "400 bar (5800 psi)" },
-      { id: 2, name: "400 bar (5800 psi)" },
-    ],
-    material: [
-      { id: 1, type: 1, name: "Экопур" },
-      { id: 2, type: 1, name: "Н-Экопур" },
-      { id: 3, type: 2, name: "NBR (70 Sh A)" },
-      { id: 4, type: 2, name: "NBR (50 Sh B)" },
-      { id: 5, type: 3, name: "Экотал" },
-      { id: 6, type: 3, name: "Экомид" },
-    ],
-  },
-  {
-    id: 2,
-    cat_id: 2,
-    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
-    name: "Сальник",
-    code: "#2",
-    desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
-    temp: [
-      { id: 1, name: "-30C ... +110C" },
-      { id: 2, name: "-30C ... +110C" },
-    ],
-    speed: [
-      { id: 1, name: "0.5 m/s" },
-      { id: 2, name: "0.5 m/s" },
-    ],
-    pressure: [
-      { id: 1, name: "400 bar (5800 psi)" },
-      { id: 2, name: "400 bar (5800 psi)" },
-    ],
-    material: [
-      { id: 1, type: 1, name: "Экопур" },
-      { id: 2, type: 1, name: "Н-Экопур" },
-      { id: 3, type: 2, name: "NBR (70 Sh A)" },
-      { id: 4, type: 2, name: "NBR (50 Sh B)" },
-      { id: 5, type: 3, name: "Экотал" },
-      { id: 6, type: 3, name: "Экомид" },
-    ],
-  },
-  {
-    id: 3,
-    cat_id: 3,
-    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
-    name: "Сальник",
-    code: "#3",
-    desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
-    temp: [
-      { id: 1, name: "-30C ... +110C" },
-      { id: 2, name: "-30C ... +110C" },
-    ],
-    speed: [
-      { id: 1, name: "0.5 m/s" },
-      { id: 2, name: "0.5 m/s" },
-    ],
-    pressure: [
-      { id: 1, name: "400 bar (5800 psi)" },
-      { id: 2, name: "400 bar (5800 psi)" },
-    ],
-    material: [
-      { id: 1, type: 1, name: "Экопур" },
-      { id: 2, type: 1, name: "Н-Экопур" },
-      { id: 3, type: 2, name: "NBR (70 Sh A)" },
-      { id: 4, type: 2, name: "NBR (50 Sh B)" },
-      { id: 5, type: 3, name: "Экотал" },
-      { id: 6, type: 3, name: "Экомид" },
-    ],
-  },
-  {
-    id: 4,
-    cat_id: 4,
-    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
-    name: "Сальник",
-    code: "#4",
-    desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
-    temp: [
-      { id: 1, name: "-30C ... +110C" },
-      { id: 2, name: "-30C ... +110C" },
-    ],
-    speed: [
-      { id: 1, name: "0.5 m/s" },
-      { id: 2, name: "0.5 m/s" },
-    ],
-    pressure: [
-      { id: 1, name: "400 bar (5800 psi)" },
-      { id: 2, name: "400 bar (5800 psi)" },
-    ],
-    material: [
-      { id: 1, type: 1, name: "Экопур" },
-      { id: 2, type: 1, name: "Н-Экопур" },
-      { id: 3, type: 2, name: "NBR (70 Sh A)" },
-      { id: 4, type: 2, name: "NBR (50 Sh B)" },
-      { id: 5, type: 3, name: "Экотал" },
-      { id: 6, type: 3, name: "Экомид" },
-    ],
-  },
-  {
-    id: 5,
-    cat_id: 2,
-    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
-    name: "Сальник",
-    code: "#5",
-    desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
-    temp: [
-      { id: 1, name: "-30C ... +110C" },
-      { id: 2, name: "-30C ... +110C" },
-    ],
-    speed: [
-      { id: 1, name: "0.5 m/s" },
-      { id: 2, name: "0.5 m/s" },
-    ],
-    pressure: [
-      { id: 1, name: "400 bar (5800 psi)" },
-      { id: 2, name: "400 bar (5800 psi)" },
-    ],
-    material: [
-      { id: 1, type: 1, name: "Экопур" },
-      { id: 2, type: 1, name: "Н-Экопур" },
-      { id: 3, type: 2, name: "NBR (70 Sh A)" },
-      { id: 4, type: 2, name: "NBR (50 Sh B)" },
-      { id: 5, type: 3, name: "Экотал" },
-      { id: 6, type: 3, name: "Экомид" },
-    ],
-  },
-  {
-    id: 6,
-    cat_id: 3,
-    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
-    name: "Сальник",
-    code: "#5",
-    desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
-    temp: [
-      { id: 1, name: "-30C ... +110C" },
-      { id: 2, name: "-30C ... +110C" },
-    ],
-    speed: [
-      { id: 1, name: "0.5 m/s" },
-      { id: 2, name: "0.5 m/s" },
-    ],
-    pressure: [
-      { id: 1, name: "400 bar (5800 psi)" },
-      { id: 2, name: "400 bar (5800 psi)" },
-    ],
-    material: [
-      { id: 1, type: 1, name: "Экопур" },
-      { id: 2, type: 1, name: "Н-Экопур" },
-      { id: 3, type: 2, name: "NBR (70 Sh A)" },
-      { id: 4, type: 2, name: "NBR (50 Sh B)" },
-      { id: 5, type: 3, name: "Экотал" },
-      { id: 6, type: 3, name: "Экомид" },
-    ],
-  },
-  {
-    id: 7,
-    cat_id: 2,
-    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
-    name: "Сальник",
-    code: "#5",
-    desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
-    temp: [
-      { id: 1, name: "-30C ... +110C" },
-      { id: 2, name: "-30C ... +110C" },
-    ],
-    speed: [
-      { id: 1, name: "0.5 m/s" },
-      { id: 2, name: "0.5 m/s" },
-    ],
-    pressure: [
-      { id: 1, name: "400 bar (5800 psi)" },
-      { id: 2, name: "400 bar (5800 psi)" },
-    ],
-    material: [
-      { id: 1, type: 1, name: "Экопур" },
-      { id: 2, type: 1, name: "Н-Экопур" },
-      { id: 3, type: 2, name: "NBR (70 Sh A)" },
-      { id: 4, type: 2, name: "NBR (50 Sh B)" },
-      { id: 5, type: 3, name: "Экотал" },
-      { id: 6, type: 3, name: "Экомид" },
-    ],
-  },
-  {
-    id: 8,
-    cat_id: 1,
-    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
-    name: "Сальник",
-    code: "#5",
-    desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
-    temp: [
-      { id: 1, name: "-30C ... +110C" },
-      { id: 2, name: "-30C ... +110C" },
-    ],
-    speed: [
-      { id: 1, name: "0.5 m/s" },
-      { id: 2, name: "0.5 m/s" },
-    ],
-    pressure: [
-      { id: 1, name: "400 bar (5800 psi)" },
-      { id: 2, name: "400 bar (5800 psi)" },
-    ],
-    material: [
-      { id: 1, type: 1, name: "Экопур" },
-      { id: 2, type: 1, name: "Н-Экопур" },
-      { id: 3, type: 2, name: "NBR (70 Sh A)" },
-      { id: 4, type: 2, name: "NBR (50 Sh B)" },
-      { id: 5, type: 3, name: "Экотал" },
-      { id: 6, type: 3, name: "Экомид" },
-    ],
-  },
-];
+import * as API from "../api/requests";
+import Swal from "sweetalert2";
 
 const Product = () => {
   const navigate = useNavigate();
   const { state, setState } = useSealState();
   const [list, setList] = useState([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     if (window.innerWidth < 640) {
@@ -242,20 +18,33 @@ const Product = () => {
   }, [setState]);
 
   useEffect(() => {
-    var result = data;
-    if (state.cat_id !== 0) {
-      result = result.filter((el) => el.cat_id === state.cat_id);
+    API.getProduct()
+      .then((res) => setData(res.data.data))
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          text: err.message,
+          confirmButtonColor: "#395C4D",
+        });
+      });
+  }, []);
+
+  useEffect(() => {
+    if (data.length > 0) {
+      var result = data;
+      if (state.cat_id !== 0) {
+        result = result.filter((el) => el.cat_id === state.cat_id);
+      }
+      if (state.search_value !== "") {
+        result = result.filter(
+          (el) =>
+            el.name.toLowerCase().includes(state.search_value.toLowerCase()) ||
+            el.code.toLowerCase().includes(state.search_value.toLowerCase())
+        );
+      }
+      setList(result);
     }
-    if (state.search_value !== "") {
-      result = result.filter(
-        (el) =>
-          el.name.toLowerCase().includes(state.search_value.toLowerCase()) ||
-          el.code.toLowerCase().includes(state.search_value.toLowerCase()) ||
-          el.desc.toLowerCase().includes(state.search_value.toLowerCase())
-      );
-    }
-    setList(result);
-  }, [state.cat_id, state.search_value]);
+  }, [data, state.cat_id, state.search_value]);
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -267,7 +56,7 @@ const Product = () => {
               return (
                 <div className="m-4 rounded-xl bg-white" key={el.id}>
                   <img
-                    src={el.url}
+                    src={"https://mmmall.mn" + el.url}
                     alt=""
                     className="rounded-t-xl object-cover cursor-pointer"
                     onClick={() => navigate("/product/" + el.id)}

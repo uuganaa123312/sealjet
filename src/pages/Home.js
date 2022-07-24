@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Carousel from "react-multi-carousel";
+import * as API from "../api/requests";
+import Swal from "sweetalert2";
 
-const responsive = {
+const logoConfig = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
     items: 5,
@@ -56,224 +58,6 @@ const newsConfig = {
     items: 2,
   },
 };
-const product = [
-  {
-    id: 1,
-    cat_id: 1,
-    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
-    name: "Сальник",
-    code: "#1",
-    desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
-    temp: [
-      { id: 1, name: "-30C ... +110C" },
-      { id: 2, name: "-30C ... +110C" },
-    ],
-    speed: [
-      { id: 1, name: "0.5 m/s" },
-      { id: 2, name: "0.5 m/s" },
-    ],
-    pressure: [
-      { id: 1, name: "400 bar (5800 psi)" },
-      { id: 2, name: "400 bar (5800 psi)" },
-    ],
-    material: [
-      { id: 1, type: 1, name: "Экопур" },
-      { id: 2, type: 1, name: "Н-Экопур" },
-      { id: 3, type: 2, name: "NBR (70 Sh A)" },
-      { id: 4, type: 2, name: "NBR (50 Sh B)" },
-      { id: 5, type: 3, name: "Экотал" },
-      { id: 6, type: 3, name: "Экомид" },
-    ],
-  },
-  {
-    id: 2,
-    cat_id: 2,
-    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
-    name: "Сальник",
-    code: "#2",
-    desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
-    temp: [
-      { id: 1, name: "-30C ... +110C" },
-      { id: 2, name: "-30C ... +110C" },
-    ],
-    speed: [
-      { id: 1, name: "0.5 m/s" },
-      { id: 2, name: "0.5 m/s" },
-    ],
-    pressure: [
-      { id: 1, name: "400 bar (5800 psi)" },
-      { id: 2, name: "400 bar (5800 psi)" },
-    ],
-    material: [
-      { id: 1, type: 1, name: "Экопур" },
-      { id: 2, type: 1, name: "Н-Экопур" },
-      { id: 3, type: 2, name: "NBR (70 Sh A)" },
-      { id: 4, type: 2, name: "NBR (50 Sh B)" },
-      { id: 5, type: 3, name: "Экотал" },
-      { id: 6, type: 3, name: "Экомид" },
-    ],
-  },
-  {
-    id: 3,
-    cat_id: 3,
-    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
-    name: "Сальник",
-    code: "#3",
-    desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
-    temp: [
-      { id: 1, name: "-30C ... +110C" },
-      { id: 2, name: "-30C ... +110C" },
-    ],
-    speed: [
-      { id: 1, name: "0.5 m/s" },
-      { id: 2, name: "0.5 m/s" },
-    ],
-    pressure: [
-      { id: 1, name: "400 bar (5800 psi)" },
-      { id: 2, name: "400 bar (5800 psi)" },
-    ],
-    material: [
-      { id: 1, type: 1, name: "Экопур" },
-      { id: 2, type: 1, name: "Н-Экопур" },
-      { id: 3, type: 2, name: "NBR (70 Sh A)" },
-      { id: 4, type: 2, name: "NBR (50 Sh B)" },
-      { id: 5, type: 3, name: "Экотал" },
-      { id: 6, type: 3, name: "Экомид" },
-    ],
-  },
-  {
-    id: 4,
-    cat_id: 4,
-    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
-    name: "Сальник",
-    code: "#4",
-    desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
-    temp: [
-      { id: 1, name: "-30C ... +110C" },
-      { id: 2, name: "-30C ... +110C" },
-    ],
-    speed: [
-      { id: 1, name: "0.5 m/s" },
-      { id: 2, name: "0.5 m/s" },
-    ],
-    pressure: [
-      { id: 1, name: "400 bar (5800 psi)" },
-      { id: 2, name: "400 bar (5800 psi)" },
-    ],
-    material: [
-      { id: 1, type: 1, name: "Экопур" },
-      { id: 2, type: 1, name: "Н-Экопур" },
-      { id: 3, type: 2, name: "NBR (70 Sh A)" },
-      { id: 4, type: 2, name: "NBR (50 Sh B)" },
-      { id: 5, type: 3, name: "Экотал" },
-      { id: 6, type: 3, name: "Экомид" },
-    ],
-  },
-  {
-    id: 5,
-    cat_id: 5,
-    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
-    name: "Сальник",
-    code: "#5",
-    desc: "Гидравлик, нэг талын ажиллагаатай. Стандарт хэрэглээнд зориулагдсан тэгш бус хэмт бүлүүрийн сальник.Тохирсон үүрэнд сууж байж стандарт хэрэглээ болдог.",
-    temp: [
-      { id: 1, name: "-30C ... +110C" },
-      { id: 2, name: "-30C ... +110C" },
-    ],
-    speed: [
-      { id: 1, name: "0.5 m/s" },
-      { id: 2, name: "0.5 m/s" },
-    ],
-    pressure: [
-      { id: 1, name: "400 bar (5800 psi)" },
-      { id: 2, name: "400 bar (5800 psi)" },
-    ],
-    material: [
-      { id: 1, type: 1, name: "Экопур" },
-      { id: 2, type: 1, name: "Н-Экопур" },
-      { id: 3, type: 2, name: "NBR (70 Sh A)" },
-      { id: 4, type: 2, name: "NBR (50 Sh B)" },
-      { id: 5, type: 3, name: "Экотал" },
-      { id: 6, type: 3, name: "Экомид" },
-    ],
-  },
-];
-const material = [
-  {
-    id: 1,
-    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
-    name: "Экобарт 1",
-    desc: "Ногоон єнгєтэй термопластик полиуретан-эластомерийн бїлэгт багтдаг. Тасрах эсэргїїцэл єндєр, бат бєх чанартай. Хэрэглээний хувьд эрдэслэг тосны орчинд ажилдаг. Усанд ажиллахад +40С хїртэл, халуун био тосны орчинд +60С хїртэл температур тэсвэрлэх чадвартай ба сальникийн хэлбэр ажиллах орчиноос хамааран 0.5 м/с-25м/с ийн шилжилт 0.5-700барийн даралт даадаг.",
-  },
-  {
-    id: 2,
-    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
-    name: "Экобарт 2",
-    desc: "Ногоон єнгєтэй термопластик полиуретан-эластомерийн бїлэгт багтдаг. Тасрах эсэргїїцэл єндєр, бат бєх чанартай. Хэрэглээний хувьд эрдэслэг тосны орчинд ажилдаг. Усанд ажиллахад +40С хїртэл, халуун био тосны орчинд +60С хїртэл температур тэсвэрлэх чадвартай ба сальникийн хэлбэр ажиллах орчиноос хамааран 0.5 м/с-25м/с ийн шилжилт 0.5-700барийн даралт даадаг.",
-  },
-  {
-    id: 3,
-    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
-    name: "Экобарт 2",
-    desc: "Ногоон єнгєтэй термопластик полиуретан-эластомерийн бїлэгт багтдаг. Тасрах эсэргїїцэл єндєр, бат бєх чанартай. Хэрэглээний хувьд эрдэслэг тосны орчинд ажилдаг. Усанд ажиллахад +40С хїртэл, халуун био тосны орчинд +60С хїртэл температур тэсвэрлэх чадвартай ба сальникийн хэлбэр ажиллах орчиноос хамааран 0.5 м/с-25м/с ийн шилжилт 0.5-700барийн даралт даадаг.",
-  },
-  {
-    id: 4,
-    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
-    name: "Экобарт 2",
-    desc: "Ногоон єнгєтэй термопластик полиуретан-эластомерийн бїлэгт багтдаг. Тасрах эсэргїїцэл єндєр, бат бєх чанартай. Хэрэглээний хувьд эрдэслэг тосны орчинд ажилдаг. Усанд ажиллахад +40С хїртэл, халуун био тосны орчинд +60С хїртэл температур тэсвэрлэх чадвартай ба сальникийн хэлбэр ажиллах орчиноос хамааран 0.5 м/с-25м/с ийн шилжилт 0.5-700барийн даралт даадаг.",
-  },
-  {
-    id: 5,
-    url: "https://resources.cdn-kaspi.kz/shop/medias/sys_master/images/images/h5f/hcd/48057544081438/topran-salnik-pervicnogo-vala-100059-103341407-1.png",
-    name: "Экобарт 2",
-    desc: "Ногоон єнгєтэй термопластик полиуретан-эластомерийн бїлэгт багтдаг. Тасрах эсэргїїцэл єндєр, бат бєх чанартай. Хэрэглээний хувьд эрдэслэг тосны орчинд ажилдаг. Усанд ажиллахад +40С хїртэл, халуун био тосны орчинд +60С хїртэл температур тэсвэрлэх чадвартай ба сальникийн хэлбэр ажиллах орчиноос хамааран 0.5 м/с-25м/с ийн шилжилт 0.5-700барийн даралт даадаг.",
-  },
-];
-const news = [
-  {
-    id: 1,
-    url: "https://upload.wikimedia.org/wikipedia/commons/5/59/500_x_300_Ramosmania_rodriguesii_%28Rubiaceae%29.jpg",
-    name: "Дэвшилтэд технологи, шинжлэх ухааны ололтын нэвтрүүлсэн шилдэг",
-    desc: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    date: "6 сарын 21нд нийтлэв",
-  },
-  {
-    id: 2,
-    url: "https://upload.wikimedia.org/wikipedia/commons/5/59/500_x_300_Ramosmania_rodriguesii_%28Rubiaceae%29.jpg",
-    name: "Дэвшилтэд технологи, шинжлэх ухааны ололтын нэвтрүүлсэн шилдэг",
-    desc: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    date: "6 сарын 22нд нийтлэв",
-  },
-  {
-    id: 3,
-    url: "https://upload.wikimedia.org/wikipedia/commons/5/59/500_x_300_Ramosmania_rodriguesii_%28Rubiaceae%29.jpg",
-    name: "Дэвшилтэд технологи, шинжлэх ухааны ололтын нэвтрүүлсэн шилдэг",
-    desc: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    date: "6 сарын 23нд нийтлэв",
-  },
-  {
-    id: 4,
-    url: "https://upload.wikimedia.org/wikipedia/commons/5/59/500_x_300_Ramosmania_rodriguesii_%28Rubiaceae%29.jpg",
-    name: "Дэвшилтэд технологи, шинжлэх ухааны ололтын нэвтрүүлсэн шилдэг",
-    desc: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    date: "6 сарын 24нд нийтлэв",
-  },
-  {
-    id: 5,
-    url: "https://upload.wikimedia.org/wikipedia/commons/5/59/500_x_300_Ramosmania_rodriguesii_%28Rubiaceae%29.jpg",
-    name: "Дэвшилтэд технологи, шинжлэх ухааны ололтын нэвтрүүлсэн шилдэг",
-    desc: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    date: "6 сарын 25нд нийтлэв",
-  },
-  {
-    id: 6,
-    url: "https://upload.wikimedia.org/wikipedia/commons/5/59/500_x_300_Ramosmania_rodriguesii_%28Rubiaceae%29.jpg",
-    name: "Дэвшилтэд технологи, шинжлэх ухааны ололтын нэвтрүүлсэн шилдэг",
-    desc: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-    date: "6 сарын 26нд нийтлэв",
-  },
-];
 
 const logo = [
   { img: "/img/Rectangle348.png", url: "https://google.com" },
@@ -294,6 +78,40 @@ const main = {
 
 const Home = () => {
   const navigate = useNavigate();
+  const [news, setNews] = useState([]);
+  const [product, setProduct] = useState([]);
+  const [material, setMaterial] = useState([]);
+
+  useEffect(() => {
+    API.getNews()
+      .then((res) => setNews(res.data.data))
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          text: err.message,
+          confirmButtonColor: "#395C4D",
+        });
+      });
+    API.getProduct()
+      .then((res) => setProduct(res.data.data))
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          text: err.message,
+          confirmButtonColor: "#395C4D",
+        });
+      });
+    API.getMaterial()
+      .then((res) => setMaterial(res.data.data))
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          text: err.message,
+          confirmButtonColor: "#395C4D",
+        });
+      });
+  }, []);
+
   return (
     <div className="pt-[58px]">
       <div className="">
@@ -322,7 +140,7 @@ const Home = () => {
         </div>
         <div className="py-5 -mt-20 lg:-mt-40 lg:py-10">
           <Carousel
-            responsive={responsive}
+            responsive={logoConfig}
             draggable={false}
             infinite={true}
             centerMode={true}
@@ -338,7 +156,7 @@ const Home = () => {
                   alt=""
                   className="w-10 h-10 object-cover lg:w-20 lg:h-20 cursor-pointer"
                   onClick={() => {
-                    window.open(el.url, "_blank");
+                    window.open("https://mmmall.mn" + el.url, "_blank");
                   }}
                 />
               );
@@ -365,9 +183,9 @@ const Home = () => {
                 <div className="mr-4 rounded-xl bg-white" key={el.id}>
                   <div className="flex items-center justify-center p-2">
                     <img
-                      src={el.url}
+                      src={"https://mmmall.mn" + el.url}
                       alt=""
-                      className="rounded-t-xl h-[94px] sm:h-[102px] md:h-[128px] lg:h-[179px] xl:h-[230px] cursor-pointer"
+                      className="rounded-t-xl h-[94px] sm:h-[102px] md:h-[128px] lg:h-[179px] xl:h-[200px] cursor-pointer"
                       onClick={() => navigate("/product/" + el.id)}
                     />
                   </div>
@@ -399,9 +217,9 @@ const Home = () => {
                 <div className="mr-4 rounded-xl bg-white" key={el.id}>
                   <div className="flex items-center justify-center p-2">
                     <img
-                      src={el.url}
+                      src={"https://mmmall.mn" + el.url}
                       alt=""
-                      className="rounded-t-xl h-[94px] sm:h-[102px] md:h-[128px] lg:h-[179px] xl:h-[230px] cursor-pointer"
+                      className="rounded-t-xl h-[94px] sm:h-[102px] md:h-[128px] lg:h-[179px] xl:h-[200px] cursor-pointer"
                       onClick={() => navigate("/material/" + el.id)}
                     />
                   </div>
@@ -434,7 +252,7 @@ const Home = () => {
                 <div className="mr-4 rounded-xl bg-white" key={el.id}>
                   <div className="flex items-center justify-center">
                     <img
-                      src={el.url}
+                      src={"https://mmmall.mn" + el.url}
                       alt=""
                       className="rounded-t-xl w-full cursor-pointer"
                       onClick={() => navigate("/news/" + el.id)}

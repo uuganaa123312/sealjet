@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import * as API from "../../api/requests";
 
 const Setting = () => {
+  // Footer
   const [footer, setFooter] = useState(false);
   const [address, setAddress] = useState("");
   const [url, setUrl] = useState();
@@ -53,7 +54,7 @@ const Setting = () => {
         .catch((err) => {
           Swal.fire({
             icon: "error",
-            text: err,
+            text: err.message,
             confirmButtonColor: "#395C4D",
           });
         });
@@ -76,20 +77,41 @@ const Setting = () => {
       .catch((err) => {
         Swal.fire({
           icon: "error",
-          text: err,
+          text: err.message,
           confirmButtonColor: "#395C4D",
         });
       });
   }, []);
+  // Footer
+
+  // Logo
+  const [logo, setLogo] = useState(false);
+  // const [logo_id, setLogo_id] = useState("new");
+  // Logo
 
   return (
     <div className="font-[roboto] mx-4">
-      <div
-        className="bg-[#395C4D] text-gray-200 max-w-xs flex items-center justify-center py-2 rounded-md tracking-widest cursor-pointer"
-        onClick={() => setFooter(!footer)}
-      >
-        Footer
+      <div className="flex">
+        <div
+          className="bg-[#395C4D] text-gray-200 flex items-center justify-center py-2 rounded-md tracking-widest cursor-pointer px-4 mr-4"
+          onClick={() => {
+            setFooter(!footer);
+            setLogo(false);
+          }}
+        >
+          Footer
+        </div>
+        <div
+          className="bg-[#395C4D] text-gray-200 flex items-center justify-center py-2 rounded-md tracking-widest cursor-pointer px-4"
+          onClick={() => {
+            setLogo(!logo);
+            setFooter(false);
+          }}
+        >
+          Logo
+        </div>
       </div>
+
       {/* footer */}
       {footer && (
         <div className="">
@@ -194,6 +216,9 @@ const Setting = () => {
         </div>
       )}
       {/* footer */}
+      {/* logo */}
+      {logo && <div>logo</div>}
+      {/* logo */}
     </div>
   );
 };

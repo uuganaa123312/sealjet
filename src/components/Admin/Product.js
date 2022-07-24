@@ -62,7 +62,7 @@ const Product = () => {
       .catch((err) => {
         Swal.fire({
           icon: "error",
-          text: err,
+          text: err.message,
           confirmButtonColor: "#395C4D",
         });
       });
@@ -121,7 +121,7 @@ const Product = () => {
         .catch((err) => {
           Swal.fire({
             icon: "error",
-            text: err,
+            text: err.message,
             confirmButtonColor: "#395C4D",
           });
         });
@@ -152,7 +152,7 @@ const Product = () => {
           .catch((err) => {
             Swal.fire({
               icon: "error",
-              text: err,
+              text: err.message,
               confirmButtonColor: "#395C4D",
             });
           });
@@ -165,7 +165,7 @@ const Product = () => {
       .catch((err) => {
         Swal.fire({
           icon: "error",
-          text: err,
+          text: err.message,
           confirmButtonColor: "#395C4D",
         });
       });
@@ -206,7 +206,7 @@ const Product = () => {
         .catch((err) => {
           Swal.fire({
             icon: "error",
-            text: err,
+            text: err.message,
             confirmButtonColor: "#395C4D",
           });
         });
@@ -237,7 +237,7 @@ const Product = () => {
           .catch((err) => {
             Swal.fire({
               icon: "error",
-              text: err,
+              text: err.message,
               confirmButtonColor: "#395C4D",
             });
           });
@@ -250,7 +250,7 @@ const Product = () => {
       .catch((err) => {
         Swal.fire({
           icon: "error",
-          text: err,
+          text: err.message,
           confirmButtonColor: "#395C4D",
         });
       });
@@ -306,7 +306,7 @@ const Product = () => {
         .catch((err) => {
           Swal.fire({
             icon: "error",
-            text: err,
+            text: err.message,
             confirmButtonColor: "#395C4D",
           });
         });
@@ -341,7 +341,7 @@ const Product = () => {
             .catch((err) => {
               Swal.fire({
                 icon: "error",
-                text: err,
+                text: err.message,
                 confirmButtonColor: "#395C4D",
               });
             });
@@ -376,7 +376,7 @@ const Product = () => {
         .catch((err) => {
           Swal.fire({
             icon: "error",
-            text: err,
+            text: err.message,
             confirmButtonColor: "#395C4D",
           });
         });
@@ -976,8 +976,8 @@ const Product = () => {
                 >
                   <option value="0">Төрөл сонгох</option>
                   <option value="1">Үндсэн сальник</option>
-                  <option value="2">Тулах цагираг</option>
-                  <option value="3">Гогцоо резин</option>
+                  <option value="2">Гогцоо резин</option>
+                  <option value="3">Тулах цагираг</option>
                   <option value="4">Пүрш</option>
                 </select>
                 <div

@@ -45,7 +45,7 @@ const Material = () => {
         .catch((err) => {
           Swal.fire({
             icon: "error",
-            text: err,
+            text: err.message,
             confirmButtonColor: "#395C4D",
           });
         });
@@ -77,7 +77,7 @@ const Material = () => {
           .catch((err) => {
             Swal.fire({
               icon: "error",
-              text: err,
+              text: err.message,
               confirmButtonColor: "#395C4D",
             });
           });
@@ -91,7 +91,7 @@ const Material = () => {
       .catch((err) => {
         Swal.fire({
           icon: "error",
-          text: err,
+          text: err.message,
           confirmButtonColor: "#395C4D",
         });
       });

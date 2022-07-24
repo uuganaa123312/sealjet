@@ -1,17 +1,35 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSealState } from "../pages/Context";
+import * as API from "../api/requests";
+import Swal from "sweetalert2";
 
-const data = {
-  id: 1,
-  url: "https://purepng.com/public/uploads/large/construction-material-zip.png",
-  name: "ЭКОРАББЕР",
-  desc: "Ногоон єнгєтэй термопластик полиуретан-эластомерийн бїлэгт багтдаг. Тасрах эсэргїїцэл єндєр, бат бєх чанартай. Хэрэглээний хувьд эрдэслэг тосны орчинд ажилдаг. Усанд ажиллахад +40С хїртэл, халуун био тосны орчинд +60С хїртэл температур тэсвэрлэх чадвартай ба сальникийн хэлбэр ажиллах орчиноос хамааран 0.5 м/с-25м/с ийн шилжилт 0.5-700барийн даралт даадаг.",
-};
+// const data = {
+//   id: 1,
+//   url: "https://purepng.com/public/uploads/large/construction-material-zip.png",
+//   name: "ЭКОРАББЕР",
+//   desc: "Ногоон єнгєтэй термопластик полиуретан-эластомерийн бїлэгт багтдаг. Тасрах эсэргїїцэл єндєр, бат бєх чанартай. Хэрэглээний хувьд эрдэслэг тосны орчинд ажилдаг. Усанд ажиллахад +40С хїртэл, халуун био тосны орчинд +60С хїртэл температур тэсвэрлэх чадвартай ба сальникийн хэлбэр ажиллах орчиноос хамааран 0.5 м/с-25м/с ийн шилжилт 0.5-700барийн даралт даадаг.",
+// };
 
 const MaterialDetail = () => {
   const navigate = useNavigate();
   const { setState } = useSealState();
+  const params = useParams();
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    API.getMaterialOne(params.id)
+      .then((res) => {
+        setData(res.data.data);
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          text: err.message,
+          confirmButtonColor: "#395C4D",
+        });
+      });
+  }, [params.id]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -41,21 +59,25 @@ const MaterialDetail = () => {
           />
         </svg>
       </div>
-      <div className="bg-white flex flex-col items-center justify-center md:flex-row sm:my-10 sm:rounded-lg">
-        <div className="md:w-1/2 flex items-center justify-center">
-          <img
-            src={data.url}
-            alt=""
-            className="rounded-br-3xl rounded-bl-3xl object-cover"
-          />
-        </div>
-        <div className="p-4 md:w-1/2 flex items-center justify-center flex-col">
-          <div className="text-2xl uppercase font-semibold lg:text-3xl">
-            {data.name}
+      {data ? (
+        <div className="bg-white flex flex-col items-center justify-center md:flex-row sm:my-10 sm:rounded-lg">
+          <div className="md:w-1/2 flex items-center justify-center">
+            <img
+              src={data.url}
+              alt=""
+              className="rounded-br-3xl rounded-bl-3xl object-cover"
+            />
           </div>
-          <div className="py-2 lg:py-4 text-justify">{data.desc}</div>
+          <div className="p-4 md:w-1/2 flex items-center justify-center flex-col">
+            <div className="text-2xl uppercase font-semibold lg:text-3xl">
+              {data.name}
+            </div>
+            <div className="py-2 lg:py-4 text-justify">{data.desc}</div>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="my-8 text-center">Хоосон байна.</div>
+      )}
     </div>
   );
 };

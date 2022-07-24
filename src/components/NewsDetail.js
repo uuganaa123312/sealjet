@@ -1,18 +1,29 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSealState } from "../pages/Context";
-
-const data = {
-  id: 1,
-  url: "https://upload.wikimedia.org/wikipedia/commons/5/59/500_x_300_Ramosmania_rodriguesii_%28Rubiaceae%29.jpg",
-  name: "Дэвшилтэд технологи, шинжлэх ухааны ололтын нэвтрүүлсэн шилдэг",
-  desc: "Үндэсний агаарын тээвэрлэгч МИАТ компани JU-1021 бүртгэлийн дугаартай Боинг767-300ER агаарын хөлгийн түрээсийн төлбөрийг хугацаанаас нь өмнө барагдуулж, 2022 оны зургаадугаар сарын 16-ны өдрөөс эхлэн өөрийн өмч болгон шилжүүлж авах ёслол өнөөдөр Хөшигийн хөндий дэх “Чингис хаан” олон улсын нисэх буудалд боллоо. Анх 2013 оны есдүгээр сард Монгол Улсын Засгийн газрын тогтоолоор 122 сая ам.долларын зээлийн баталгаа гаргаж, мөн оны 12-р сард АНУ-ын Экспорт-Импорт банкны баталгаа бүхий зээлээр МИАТ компани АНУ-ын Боинг компанийн хооронд байгуулсан гэрээний Худалдах, худалдан авах гэрээний дагуу Монголд Боинг767-300ER маягийн будаг нь ханхалсан онгоц ирсэн түүхтэй. Зээлийг 2014 оноос эхлэн 2022 он хүртэл гэрээнд заасан хуваарийн дагуу МИАТ компани өөрийн үйл ажиллагааны орлогоор цаг хугацаанд нь төлж байжээ. Зээлийн төлбөрийг 2023 оны хоёрдугаар сард төлж дуусах графиктай байсан бөгөөд зээлийн үлдэгдэл болох 8.15 сая ам.долларыг бүрэн төлснөөр онгоц МИАТ-ын эзэмшилд ирлээ. Иргэний нисэхийн ерөнхий газрын дарга С.Мөнхнасан Боинг767-300ER агаарын хөлгийн бүртгэлийн гэрчилгээг МИАТ ТӨХК-ийн гүйцэтгэх захирал Б.Мөнхтамирт гардуулан өгч, нисэх багийн хамт олонд баяр хүргэлээ.",
-  date: "6 сарын 21нд нийтлэв",
-};
+import * as API from "../api/requests";
+import Swal from "sweetalert2";
+import moment from "moment";
 
 const NewsDetail = () => {
   const navigate = useNavigate();
+  const params = useParams();
   const { setState } = useSealState();
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    API.getNewsOne(params.id)
+      .then((res) => {
+        setData(res.data.data);
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          text: err.message,
+          confirmButtonColor: "#395C4D",
+        });
+      });
+  }, [params.id]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -42,34 +53,27 @@ const NewsDetail = () => {
           />
         </svg>
       </div>
-      <div className="">
-        <img
-          src={data.url}
-          alt=""
-          className="h-[250px] w-full object-cover md:h-[250px] lg:h-[450px]"
-        />
-        <div className="bg-white rounded-tr-3xl rounded-tl-3xl w-full -mt-4 inline-block p-4">
-          <div className="text-sm">12 сарын 15</div>
-          <div className="text-xl font-bold pt-3">
-            “ДЭВШИЛТЭТ ТЕХНОЛОГИ, ШИНЖЛЭХ УХААНЫ ОЛОЛТЫГ НЭВТРҮҮЛСЭН ШИЛДЭГ”
-          </div>
-          <div className="pt-3 text-justify">
-            Бизнесийн салбарт өөрийн мэдлэг боловсрол, авъяас чадвар, оюун
-            ухаанаа дайчлан ажиллаж буй “Сийл Жет Монгол” ХХК-ний хамт олон 2010
-            оны 5- р сарын 10-ны өдөр Хүнс Хөдөө Аж Ахуй, Хөнгөн Үйлдвэрийн
-            Яамнаас зохион байгуулсан “Жижиг, дунд үйлдвэр -Хоршоо-2010”
-            үзэсгэлэн худалдаанд амжилттай оролцон “Дэвшилтэт технологи,
-            шинжилэх ухааны ололтыг нэвтрүүлсэн Шилдэг үйлдвэрлэгч ” номинацид
-            шалгарч Цом, Хүндэт өргөмжлөл гардан авлаа. Бизнесийн салбарт өөрийн
-            мэдлэг боловсрол, авъяас чадвар, оюун ухаанаа дайчлан ажиллаж буй
-            “Сийл Жет Монгол” ХХК-ний хамт олон 2010 оны 5- р сарын 10-ны өдөр
-            Хүнс Хөдөө Аж Ахуй, Хөнгөн Үйлдвэрийн Яамнаас зохион байгуулсан
-            “Жижиг, дунд үйлдвэр -Хоршоо-2010” үзэсгэлэн худалдаанд амжилттай
-            оролцон “Дэвшилтэт технологи, шинжилэх ухааны ололтыг нэвтрүүлсэн
-            Шилдэг үйлдвэрлэгч ” номинацид шалгарч Цом, Хүндэт өргөмжлөл гардан
+      {data && (
+        <div className="">
+          <img
+            src={"https://mmmall.mn" + data.url}
+            alt=""
+            className="h-[250px] w-full object-cover md:h-[250px] lg:h-[450px]"
+          />
+          <div className="bg-white rounded-tr-3xl rounded-tl-3xl w-full -mt-4 inline-block p-4">
+            <div className="text-sm">
+              {moment(data.date).format("YYYY") +
+                " оны " +
+                moment(data.date).format("MM") +
+                " сарын " +
+                moment(data.date).format("DD") +
+                "нд нийтлэв"}
+            </div>
+            <div className="text-xl font-bold pt-3">{data.name}</div>
+            <div className="pt-3 text-justify">{data.desc}</div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

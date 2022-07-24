@@ -99,6 +99,10 @@ export async function getNews() {
   const response = await SEALJET().get("/news");
   return response;
 }
+export async function getNewsOne(id) {
+  const response = await SEALJET().get("/news/" + id);
+  return response;
+}
 export async function deleteNews(id) {
   const response = await SEALJET().delete("/news/" + id);
   return response;
@@ -119,6 +123,10 @@ export async function getMaterial() {
   const response = await SEALJET().get("/material");
   return response;
 }
+export async function getMaterialOne(id) {
+  const response = await SEALJET().get("/material/" + id);
+  return response;
+}
 export async function deleteMaterial(id) {
   const response = await SEALJET().delete("/material/" + id);
   return response;
@@ -137,6 +145,10 @@ export async function postProduct(id, formData) {
 }
 export async function getProduct() {
   const response = await SEALJET().get("/product");
+  return response;
+}
+export async function getProductOne(id) {
+  const response = await SEALJET().get("/product/" + id);
   return response;
 }
 export async function deleteProduct(id) {
@@ -179,6 +191,25 @@ export async function postProductChild(type, product_id, tempData) {
 }
 export async function deleteProductChild(type, product_id, id) {
   const response = await SEALJET().delete(type + product_id + "/" + id);
+  return response;
+}
+// Temp
+// Temp
+export async function getLogo() {
+  const response = await SEALJET().get("/logo");
+  return response;
+}
+export async function postLogo(id, formData) {
+  if (id === "new") {
+    const response = await SEALJET().post("/logo", formData);
+    return response;
+  } else {
+    const response = await SEALJET().put("/logo/" + id, formData);
+    return response;
+  }
+}
+export async function deleteLogo(id) {
+  const response = await SEALJET().delete("/logo/" + id);
   return response;
 }
 // Temp
