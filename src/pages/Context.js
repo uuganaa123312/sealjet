@@ -51,6 +51,12 @@ const initialState = {
   search_value: "",
   cat_id: 0,
   productList: [],
+  modal_type: undefined,
+  product_id: "0",
+  temp_name: "",
+  temp_list: [],
+  temp_refresh: 1,
+  material_type: "0",
 };
 
 export const useSealState = () => {

@@ -124,3 +124,61 @@ export async function deleteMaterial(id) {
   return response;
 }
 // Material
+// Product
+export async function postProduct(id, formData) {
+  if (id === "new") {
+    const response = await SEALJET().post("/product", formData);
+    return response;
+  } else {
+    const response = await SEALJET().put("/product/" + id, formData);
+
+    return response;
+  }
+}
+export async function getProduct() {
+  const response = await SEALJET().get("/product");
+  return response;
+}
+export async function deleteProduct(id) {
+  const response = await SEALJET().delete("/product/" + id);
+  return response;
+}
+// Product
+// Category
+export async function postCategory(id, params) {
+  if (id === "new") {
+    const response = await SEALJET().post("/category", {
+      ...params,
+    });
+    return response;
+  } else {
+    const response = await SEALJET().put("/category/" + id, {
+      ...params,
+    });
+
+    return response;
+  }
+}
+export async function getCategory() {
+  const response = await SEALJET().get("/category");
+  return response;
+}
+export async function deleteCategory(id) {
+  const response = await SEALJET().delete("/category/" + id);
+  return response;
+}
+// Category
+// Temp
+export async function getProductChild(type, id) {
+  const response = await SEALJET().get(type + id);
+  return response;
+}
+export async function postProductChild(type, product_id, tempData) {
+  const response = await SEALJET().post(type + product_id, tempData);
+  return response;
+}
+export async function deleteProductChild(type, product_id, id) {
+  const response = await SEALJET().delete(type + product_id + "/" + id);
+  return response;
+}
+// Temp
