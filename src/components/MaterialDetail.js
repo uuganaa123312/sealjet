@@ -63,7 +63,7 @@ const MaterialDetail = () => {
         <div className="bg-white flex flex-col items-center justify-center md:flex-row sm:my-10 sm:rounded-lg">
           <div className="md:w-1/2 flex items-center justify-center">
             <img
-              src={data.url}
+              src={"https://mmmall.mn" + data.url}
               alt=""
               className="rounded-br-3xl rounded-bl-3xl object-cover"
             />

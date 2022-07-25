@@ -218,7 +218,7 @@ const ProductDetail = () => {
   const navigate = useNavigate();
   const { setState } = useSealState();
   const params = useParams();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
@@ -278,7 +278,7 @@ const ProductDetail = () => {
         </svg>
       </div>
       <div className="flex flex-col items-center justify-center sm:mt-[116px]">
-        {data.length > 0 ? (
+        {data ? (
           <div className="bg-white sm:mt-10 sm:mx-4 sm:rounded-lg sm:p-10">
             <div className="flex items-center justify-center flex-col sm:flex-row">
               <img
@@ -305,7 +305,7 @@ const ProductDetail = () => {
                 )}
                 {data.temp.length > 0 &&
                   data.temp.map((el) => {
-                    return <div key={el.id}>{el.name}</div>;
+                    return <div key={el._id}>{el.name}</div>;
                   })}
               </div>
               <div>
@@ -316,7 +316,7 @@ const ProductDetail = () => {
                 )}
                 {data.speed.length > 0 &&
                   data.speed.map((el) => {
-                    return <div key={el.id}>{el.name}</div>;
+                    return <div key={el._id}>{el.name}</div>;
                   })}
               </div>
               <div>
@@ -327,7 +327,7 @@ const ProductDetail = () => {
                 )}
                 {data.pressure.length > 0 &&
                   data.pressure.map((el) => {
-                    return <div key={el.id}>{el.name}</div>;
+                    return <div key={el._id}>{el.name}</div>;
                   })}
               </div>
               <div>
@@ -347,7 +347,7 @@ const ProductDetail = () => {
                           data.material
                             .filter((el) => parseInt(el.type) === 1)
                             .map((el) => {
-                              return <div key={el.id}>{el.name}</div>;
+                              return <div key={el._id}>{el.name}</div>;
                             })}
                       </div>
                       <div>
@@ -360,7 +360,7 @@ const ProductDetail = () => {
                           data.material
                             .filter((el) => parseInt(el.type) === 2)
                             .map((el) => {
-                              return <div key={el.id}>{el.name}</div>;
+                              return <div key={el._id}>{el.name}</div>;
                             })}
                       </div>
                       <div>
@@ -374,7 +374,7 @@ const ProductDetail = () => {
                           data.material
                             .filter((el) => parseInt(el.type) === 3)
                             .map((el) => {
-                              return <div key={el.id}>{el.name}</div>;
+                              return <div key={el._id}>{el.name}</div>;
                             })}
                       </div>
                       <div>
@@ -388,7 +388,7 @@ const ProductDetail = () => {
                           data.material
                             .filter((el) => parseInt(el.type) === 4)
                             .map((el) => {
-                              return <div key={el.id}>{el.name}</div>;
+                              return <div key={el._id}>{el.name}</div>;
                             })}
                       </div>
                     </div>

@@ -6,13 +6,9 @@ import * as API from "../../api/requests";
 const News = () => {
   const [refresh, setRefresh] = useState(1);
   const [id, setId] = useState("new");
-  console.log("id: ", id);
   const [url, setUrl] = useState();
-  console.log("url: ", url);
   const [name, setName] = useState("");
-  console.log("name: ", name);
   const [desc, setDesc] = useState("");
-  console.log("desc: ", desc);
   const [list, setList] = useState([]);
 
   const Save = () => {
