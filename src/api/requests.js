@@ -194,7 +194,7 @@ export async function deleteProductChild(type, product_id, id) {
   return response;
 }
 // Temp
-// Temp
+// Logo
 export async function getLogo() {
   const response = await SEALJET().get("/logo");
   return response;
@@ -212,4 +212,18 @@ export async function deleteLogo(id) {
   const response = await SEALJET().delete("/logo/" + id);
   return response;
 }
-// Temp
+// Logo
+// Logo
+export async function getHome() {
+  const response = await SEALJET().get("/main");
+  return response;
+}
+export async function putHome(formData) {
+  const response = await SEALJET().put(
+    "/main/62de982ab9cd5829e02b3b8f",
+    formData
+  );
+  return response;
+}
+
+// Logo

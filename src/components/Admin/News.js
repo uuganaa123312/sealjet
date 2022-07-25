@@ -177,13 +177,13 @@ const News = () => {
               list.map((el) => {
                 return (
                   <div
-                    className="flex items-center justify-between py-2"
+                    className="flex items-center justify-evenly py-4"
                     key={el.id}
                   >
                     <img
                       src={"https://mmmall.mn" + el.url}
                       alt=""
-                      className="w-14 h-14 object-cover rounded-xl mr-8"
+                      className="w-14 h-14 object-cover rounded-xl mr-2"
                     />
                     <div className="pr-4">
                       <div className="text-sm font-semibold">{el.name}</div>

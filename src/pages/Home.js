@@ -59,30 +59,33 @@ const newsConfig = {
   },
 };
 
-const logo = [
-  { img: "/img/Rectangle348.png", url: "https://google.com" },
-  { img: "/img/Rectangle349.png", url: "https://google.com" },
-  { img: "/img/Rectangle350.png", url: "https://google.com" },
-  { img: "/img/Rectangle351.png", url: "https://google.com" },
-  { img: "/img/Rectangle352.png", url: "https://google.com" },
-  { img: "/img/Rectangle353.png", url: "https://google.com" },
-  { img: "/img/Rectangle354.png", url: "https://google.com" },
-];
-
-const main = {
-  url1: "/img/home-bg.png",
-  url2: "/img/home-s.png",
-  title: "Сальникийн төрөлжсөн дэлгүүр",
-  desc: "Монгол - Австрийн хамтарсан Сийл Жет Монгол ХХК нь 2003 оноос эхлэн бүх төрлийн авто машин, техник тоног төхөөрөмжийн нягтруулагч цагираг, жийргэвч ( сальник )-ийг үйлдвэрлэн дотоодын зах зээлд нийлүүлж байна.",
-};
+// const main = {
+//   url1: "/img/home-bg.png",
+//   url2: "/img/home-s.png",
+//   title: "Сальникийн төрөлжсөн дэлгүүр",
+//   desc: "Монгол - Австрийн хамтарсан Сийл Жет Монгол ХХК нь 2003 оноос эхлэн бүх төрлийн авто машин, техник тоног төхөөрөмжийн нягтруулагч цагираг, жийргэвч ( сальник )-ийг үйлдвэрлэн дотоодын зах зээлд нийлүүлж байна.",
+// };
 
 const Home = () => {
   const navigate = useNavigate();
   const [news, setNews] = useState([]);
   const [product, setProduct] = useState([]);
   const [material, setMaterial] = useState([]);
+  const [logo, setLogo] = useState([]);
+  const [main, setMain] = useState();
 
   useEffect(() => {
+    API.getHome()
+      .then((res) => {
+        setMain(res.data.data[0]);
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          text: err.message,
+          confirmButtonColor: "#395C4D",
+        });
+      });
     API.getNews()
       .then((res) => setNews(res.data.data))
       .catch((err) => {
@@ -110,33 +113,46 @@ const Home = () => {
           confirmButtonColor: "#395C4D",
         });
       });
+    API.getLogo()
+      .then((res) => setLogo(res.data.data))
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          text: err.message,
+          confirmButtonColor: "#395C4D",
+        });
+      });
   }, []);
 
   return (
     <div className="pt-[58px]">
       <div className="">
         <div className="bg-black">
-          <img
-            src={main.url1}
-            alt=""
-            className="opacity-40 object-cover h-[300px] w-full sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]"
-          />
+          {main && (
+            <img
+              src={"https://mmmall.mn" + main?.url1}
+              alt=""
+              className="opacity-40 object-cover h-[300px] w-full sm:h-[400px] md:h-[500px] lg:h-[600px] xl:h-[700px]"
+            />
+          )}
         </div>
         <div className="absolute top-[179px] font-bold text-white text-xl w-full text-center uppercase">
-          <div className="flex items-center justify-center max-w-7xl mx-auto px-4">
-            <img
-              src={main.url2}
-              alt=""
-              className="w-[40%] h-[280px] object-cover hidden md:block md:flex-1"
-            />
-            <div className="w-[60%] lg:text-3xl">
-              {main.title}
-              <br />
-              <span className="text-xs opacity-60 font-normal hidden sm:block md:flex-1 md:pt-2 lg:text-base">
-                {main.desc}
-              </span>
+          {main && (
+            <div className="flex items-center justify-center max-w-7xl mx-auto px-4">
+              <img
+                src={"https://mmmall.mn" + main?.url2}
+                alt=""
+                className="w-[40%] h-[280px] object-cover hidden md:block md:flex-1"
+              />
+              <div className="w-[60%] lg:text-3xl">
+                {main?.title}
+                <br />
+                <span className="text-xs opacity-60 font-normal hidden sm:block md:flex-1 md:pt-2 lg:text-base">
+                  {main?.desc}
+                </span>
+              </div>
             </div>
-          </div>
+          )}
         </div>
         <div className="py-5 -mt-20 lg:-mt-40 lg:py-10">
           <Carousel
@@ -148,19 +164,20 @@ const Home = () => {
             autoPlaySpeed={3000}
             removeArrowOnDeviceType={["tablet", "mobile"]}
           >
-            {logo.map((el, index) => {
-              return (
-                <img
-                  key={index}
-                  src={el.img}
-                  alt=""
-                  className="w-10 h-10 object-cover lg:w-20 lg:h-20 cursor-pointer"
-                  onClick={() => {
-                    window.open("https://mmmall.mn" + el.url, "_blank");
-                  }}
-                />
-              );
-            })}
+            {logo.length > 0 &&
+              logo.map((el, index) => {
+                return (
+                  <img
+                    key={index}
+                    src={"https://mmmall.mn" + el.img}
+                    alt=""
+                    className="w-10 h-10 object-cover lg:w-20 lg:h-20 cursor-pointer"
+                    onClick={() => {
+                      window.open(el.url, "_blank");
+                    }}
+                  />
+                );
+              })}
           </Carousel>
         </div>
         <div className="px-4 py-4 max-w-7xl mx-auto lg:my-6">
